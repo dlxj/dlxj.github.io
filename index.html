@@ -1,1 +1,111 @@
-# dlxj.github.io
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+<title>音乐播放盒</title>
+<link href="css/player.css" rel="stylesheet" type="text/css"/>
+</head>
+
+<body>
+
+<div class="mask"></div>
+
+<div class="music" onselectstart="return false;">
+
+    <div class="song-box song-box-fold" id="song-box">
+    	<div class="song-list">
+        	<div class="list-hd">
+            	<strong class="list-song-tracks">曲目</strong><strong class="list-song-name">歌曲名</strong><strong class="list-song-songer">歌手</strong>
+            </div>
+            <div class="list-bd" id="list-bd">
+            	<ul id="list-group"></ul>
+            </div>
+         </div>
+    </div>
+    <a class="list-btn fold-list" href="javascript:;" id="list-btn" title="展开歌曲列表"><</a>
+
+    <div class="lrc">
+    	<div class="lrc-box" id="lrc-box">
+        	<ul class="lrc-list">
+            </ul>
+        </div>
+    </div>
+
+    <div class="play-mode play-mode-list" id="play-mode" data-mode="list">
+        <a class="mode-item mode-single" id="mode-single" href="javascript:;" title="单曲循环">
+            <b class="mode-icon mode-single01">→</b>
+            <b class="mode-icon mode-single02">←</b>
+            <b class="mode-icon mode-single03">1</b>
+         </a>
+        <a class="mode-item mode-random" id="mode-random" href="javascript:;" title="随机播放">
+            <b class="mode-icon mode-random01">X</b>
+            <b class="mode-icon mode-random02">→</b>
+            <b class="mode-icon mode-random03">→</b>
+         </a>
+        <a class="mode-item mode-list" id="mode-list" href="javascript:;" title="列表循环">
+            <b class="mode-icon mode-list01">→</b>
+            <b class="mode-icon mode-list02">←</b>
+        </a>
+    </div>
+
+    <div class="player-progress">
+        <div class="progress-bar" id="progress-bar">
+            <div class="progress-val" id="progress-val"></div>
+            <b class="progress-icon" id="progress-icon"></b>
+            <div class="progress-time" id="progress-time">
+                <span class="cur-time">00:00</span>
+                <span class="total-time">00:00</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="clearfix player-bar">
+        <div class="song">
+            <div class="song-pic">
+                <img src="" id="song-pic"/>
+                <b class="circle"></b>
+            </div>
+            <div class="song-des" id="song-des">
+                <h2 class="song-name"></h2>
+                <p class="song-songer">歌手：<span class="songer"></span></p>
+                <p class="song-album">专辑：<span class="album"></span></p>
+            </div>
+        </div>
+        <div class="play-bar">
+            <span class="prev" id="play-prev">
+                <b class="action-icon prev-icon"></b>
+                <i class="line"></i>
+            </span>
+            <span class="status status-stop" id="play-status">
+                <b class="action-icon stop-icon"></b>
+                <b class="action-icon play-icon"></b></span>
+            <span class="next" id="play-next">
+                <b class="action-icon next-icon"></b>
+                <i class="line"></i>
+            </span>
+            <div class="volume">
+                <div class="volume-icon"><b class="volume-icon01"></b><b class="volume-icon02" id="volume-icon02">x</b></div>
+                <span class="volume-bar" id="volume-bar"><b class="volume-control"></b><b class="volume-val"></b></span>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="fun-intro" style="display:none;">
+    <h3 class="intro-tit">功能介绍：</h3>
+    <p>1. 播放暂停：支持播放和暂停，再次播放时，会在上次暂停点继续播放。</p>
+    <p>2 .播放模式：支持列表循环、随机播放、单曲循环三种播放模式。默认为列表循环播放，自动下曲。</p>
+    <p>3 .歌词显示：歌词滚动显示，并且当前歌词高亮。</p>
+    <p>4 .音量调节：可通过拖拽音量按钮来调节播放音量大小。</p>
+    <p>5 .进度控制：可拖动进度按钮来控制歌曲的播放进度。</p>
+    <p>6 .列表滚动：由于歌曲列表可视歌曲最多六首，当歌曲多余六首，列表会出现滚动条。而该播放器可根据当前播放歌曲来滚动列表，保证当前播放歌曲在列表可见，类似歌词滚动。</p>
+</div>
+
+</body>
+</html>
+<script src="js/base.js"></script>
+<script src="js/ajax.js"></script>
+<script src="js/hammer.min.js"></script>
+<script src="js/player.js"></script>
