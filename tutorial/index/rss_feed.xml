@@ -1,0 +1,617 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Mathematica Tutorial</title>
+    <link>https://mresources.github.io/tutorial</link>
+    <atom:link href="https://mresources.github.io/tutorial/index/rss_feed.xml" rel="self" type="application/rss+xml" />
+    <image>
+      <url>https://mresources.github.io/tutorial/favicon-32x32.png</url>
+      <title>Mathematica Tutorial</title>
+      <link>https://mresources.github.io/tutorial</link>
+    </image>
+    <description>Mathematica Tutorial</description>
+  <item>
+    <title>Trott-Strzebonski</title>
+    <link>https://mresources.github.io/tutorial/mathematica-programming/assorted-tricks/trottstrzebonski.html</link>
+    <description>
+        Trott-Strzebonski (replace with evaluation)   This is the pattern we saw earlier for replacing a part of an expression with an evaluated expression:      Hold[holdReplace]/.{holdReplace:&gt;With[{eval=Integrate[Sin[], {, 2, }]}, eval/;True]} (*Out:*) Hold[1+Cos[2]]     It is a nice trick to keep in mind for those cases when you need to insert something into a held context and it would be too much of a pain to wrap everything in a With .
+    </description>
+    <guid>https://mresources.github.io/tutorial/mathematica-programming/assorted-tricks/trottstrzebonski.html</guid>
+    <pubDate>Tue 17 Jul 2018 14:19:18</pubDate>
+  </item>
+  <item>
+    <title>Villegas-Gayley</title>
+    <link>https://mresources.github.io/tutorial/mathematica-programming/assorted-tricks/villegasgayley.html</link>
+    <description>
+        Villegas-Gayley (internal function overloads)   This is a way we can assign definitions to built-in functions cleanly. This takes advantage of a two main things, a conditional definition and the power of Block . We&#39;ll use it to overload how MessageName works.      Unprotect@MessageName; (MessageName[o_,a:Except[&quot;usage&quot;]]/;!TrueQ@$recursionBreakingVariable):= If[ MatchQ[o,object[_Association]], First[o][a], Block[{$recursionBreakingVariable=True}, MessageName[o,a] ] ]; Protect@MessageName;     Now we can do fun things with the MessageName operator, ::     object[&lt;|&quot;a&quot;-&gt;b,&quot;c&quot;-&gt;d,&quot;e&quot;-&gt;f|&gt;]::a (*Out:*) b
+    </description>
+    <guid>https://mresources.github.io/tutorial/mathematica-programming/assorted-tricks/villegasgayley.html</guid>
+    <pubDate>Wed 18 Jul 2018 21:38:13</pubDate>
+  </item>
+  <item>
+    <title>Import and ReadList</title>
+    <link>https://mresources.github.io/tutorial/mathematica-programming/assorted-tricks/import-and-readlist.html</link>
+    <description>
+        Import and ReadList   Import has a peculiar feature. It requires vastly more memory than the size of the file being imported, which can lead to nasty behavior, sometimes. To get around this one would think of importing line-by-line as one does in python or C++ and the ReadLine function seems perfect for the job.   Unfortunately ReadLine is horrendously slow. So the better thing to do is to use ReadList , line, by line on an InputStream object.
+    </description>
+    <guid>https://mresources.github.io/tutorial/mathematica-programming/assorted-tricks/import-and-readlist.html</guid>
+    <pubDate>Wed 18 Jul 2018 22:10:42</pubDate>
+  </item>
+  <item>
+    <title>CurrentValue and FrontEndTokens</title>
+    <link>https://mresources.github.io/tutorial/mathematica-programming/assorted-tricks/currentvalue-and-frontendtokens.html</link>
+    <description>
+        CurrentValue and FrontEndTokens   As mentioned briefly under Highly Useful Functionality  Kernels and Remote Computations Mathematica has a device called a FrontEndToken for accessing front end methods and information.    FrontEndToken   In general, how this is structured is the following:      FrontEndToken[token_String]
+    </description>
+    <guid>https://mresources.github.io/tutorial/mathematica-programming/assorted-tricks/currentvalue-and-frontendtokens.html</guid>
+    <pubDate>Fri 29 Dec 2017 23:23:44</pubDate>
+  </item>
+  <item>
+    <title>Info Scraping</title>
+    <link>https://mresources.github.io/tutorial/mathematica-programming/assorted-tricks/info-scraping.html</link>
+    <description>
+        Info Scraping   Mathematica, being so symbolic, is a particularly easy language to scrape and get information from, particularly given the rich pattern language it supports.   Because of this, we can learn a lot by simply pulling relevant info from the source files of the program. First we need a way to get the source files:      internalFiles[namePattern_,directoryExtensions___,depth:_Integer|:]:= FileNames[namePattern, FileNameJoin@{ $InstallationDirectory, directoryExtensions }, depth];
+    </description>
+    <guid>https://mresources.github.io/tutorial/mathematica-programming/assorted-tricks/info-scraping.html</guid>
+    <pubDate>Fri 29 Dec 2017 17:18:09</pubDate>
+  </item>
+  <item>
+    <title>Object Oriented Programming</title>
+    <link>https://mresources.github.io/tutorial/mathematica-programming/assorted-tricks/object-oriented-programming.html</link>
+    <description>
+        Object Oriented Programming   Mathematica is a functional programming language, which, for the purposes of the current discussion, basically means that everything has a purely symbolic representation. Often we talk about things not have state which is to say, they dont have attributes.   This makes Mathematica code very deterministic and results easy to store, but sometimes using something with state can be useful. We call these things with state objects and so programming with things with state is called object oriented programming (OOP).
+    </description>
+    <guid>https://mresources.github.io/tutorial/mathematica-programming/assorted-tricks/object-oriented-programming.html</guid>
+    <pubDate>Fri 29 Dec 2017 17:18:15</pubDate>
+  </item>
+  <item>
+    <title>Scoping Revisited</title>
+    <link>https://mresources.github.io/tutorial/mathematica-programming/code-structure/scoping-revisited.html</link>
+    <description>
+        Scoping Revisited   With, Module, and Block   We finally have enough knowledge to understand the differences between the scoping constructs. We&#39;ll start by writing the same chunk of code with each:      Module[{a=35},     a^2 ]      (*Out:*) 1225 With[{a=35},
+    </description>
+    <guid>https://mresources.github.io/tutorial/mathematica-programming/code-structure/scoping-revisited.html</guid>
+    <pubDate>Tue 17 Jul 2018 13:21:26</pubDate>
+  </item>
+  <item>
+    <title>Flow Control</title>
+    <link>https://mresources.github.io/tutorial/mathematica-programming/code-structure/flow-control.html</link>
+    <description>
+        Mathematica, being primarily a functional programming language, doesn&#39;t use standard flow-control techniques such as While , Break , Continue , etc . to the same degree that a primarily procedural language like python does.   Despite that, these are still useful things to know how to work with. We&#39;ll go through them pretty quickly, one-by-one.    While   Of all of these, While is likely the most common to be used, although as mentioned previously it can be emulated perhaps more cleanly by Do with Infinity as the iterator spec.
+    </description>
+    <guid>https://mresources.github.io/tutorial/mathematica-programming/code-structure/flow-control.html</guid>
+    <pubDate>Mon 16 Jul 2018 23:27:15</pubDate>
+  </item>
+  <item>
+    <title>Error Handling</title>
+    <link>https://mresources.github.io/tutorial/mathematica-programming/code-structure/error-handling.html</link>
+    <description>
+        Error Handling   As we noted before, errors in Mathematica are much more subtle than in many languages. There is no compiler, so nothing will warn you about compile-time errors, and there is no real concept of an automatic runtime errori.e. there is nothing in the language enforcing any type of strict semantics. Because of this we need to be particularly careful about validating errors ourselves.   When we catch one of these errors we then have the question of what to do with it. To compound the difficulty, there aren&#39;t any official guidelines on the best ways to handle errors. I have my own preferences, and so we&#39;ll work through the various cases in order of least-to-most suggested.    Abort
+    </description>
+    <guid>https://mresources.github.io/tutorial/mathematica-programming/code-structure/error-handling.html</guid>
+    <pubDate>Fri 20 Jul 2018 20:07:30</pubDate>
+  </item>
+  <item>
+    <title>Symbols and Expressions</title>
+    <link>https://mresources.github.io/tutorial/mathematica-programming/code-structure/symbols-and-expressions.html</link>
+    <description>
+        Symbols and Expressions   Symbols   Mathematica has one more basic type than those mentioned before: Symbol   In reality, every variable we&#39;ve used and function we&#39;ve defined (excluding pure functions) has been a symbol.
+    </description>
+    <guid>https://mresources.github.io/tutorial/mathematica-programming/code-structure/symbols-and-expressions.html</guid>
+    <pubDate>Wed 18 Jul 2018 23:47:42</pubDate>
+  </item>
+  <item>
+    <title>Expressions Structure</title>
+    <link>https://mresources.github.io/tutorial/mathematica-programming/code-structure/expressions-structure.html</link>
+    <description>
+        Expressions Structure   Heads   For any expression the part before the square brackets is known as the Head of the expression and happily there is the conveniently named Head function extract it!      Head@&lt;|1-&gt;2, 3-&gt;4, 5-&gt;6|&gt; (*Out:*) Association     The Head of an expression can be anything. It can be a string:      Head@&quot;a&quot;[b] (*Out:*) &quot;a&quot;
+    </description>
+    <guid>https://mresources.github.io/tutorial/mathematica-programming/code-structure/expressions-structure.html</guid>
+    <pubDate>Thu 19 Jul 2018 00:05:36</pubDate>
+  </item>
+  <item>
+    <title>Patterns</title>
+    <link>https://mresources.github.io/tutorial/mathematica-programming/code-structure/patterns.html</link>
+    <description>
+        Patterns   Simple Patterns   Patterns and how to use them might be the most important thing to understand in Mathematica   At some level, due to its expression-centered structure, Mathematica is just a huge pattern matching machine
+    </description>
+    <guid>https://mresources.github.io/tutorial/mathematica-programming/code-structure/patterns.html</guid>
+    <pubDate>Thu 19 Jul 2018 00:12:32</pubDate>
+  </item>
+  <item>
+    <title>Replacement Patterns</title>
+    <link>https://mresources.github.io/tutorial/mathematica-programming/code-structure/replacement-patterns.html</link>
+    <description>
+        Replacement Patterns   The fundamental usage of patterns is in replacement. This is just what it sounds like. One replaces part of an expression with something else. Theres a whole family of functions built around this concept, too, and theyre some of the oldest functions in the language. They all share one parent, though    Replace   Replace is possibly the most fundamental function in Mathematica. It takes an expression and if it matches a pattern, replaces it with that value. For example:      Replace[{1, 2, 3}, a : {__Integer} :&gt; Column@a] (*Out:*)
+    </description>
+    <guid>https://mresources.github.io/tutorial/mathematica-programming/code-structure/replacement-patterns.html</guid>
+    <pubDate>Wed 27 Dec 2017 16:12:10</pubDate>
+  </item>
+  <item>
+    <title>Functions</title>
+    <link>https://mresources.github.io/tutorial/mathematica-programming/code-structure/functions.html</link>
+    <description>
+        Functions   Functions as Patterns   The reason for that long discussion of patterns is the following: Mathematica functions (except pure functions) are just patterns. Consider the following:      f[x_]:=x*10     All I&#39;ve done here is tell the system that whenever it sees the pattern f[Blank[]] execute the right hand code, but with x replaced with the value of that Blank[] .
+    </description>
+    <guid>https://mresources.github.io/tutorial/mathematica-programming/code-structure/functions.html</guid>
+    <pubDate>Thu 19 Jul 2018 00:15:29</pubDate>
+  </item>
+  <item>
+    <title>Contexts</title>
+    <link>https://mresources.github.io/tutorial/mathematica-programming/code-structure/contexts.html</link>
+    <description>
+        Contexts   Contexts are a relatively simple concept but have major effects. Their basic use is to tag symbols with extra information. Usually we are in the global context:      $Context (*Out:*) &quot;Global`&quot;     Although many of the functions we use are not:      Context@Plot (*Out:*) &quot;System`&quot;
+    </description>
+    <guid>https://mresources.github.io/tutorial/mathematica-programming/code-structure/contexts.html</guid>
+    <pubDate>Thu 19 Jul 2018 00:17:22</pubDate>
+  </item>
+  <item>
+    <title>OwnValues, Set, and SetDelayed</title>
+    <link>https://mresources.github.io/tutorial/mathematica-programming/code-structure/ownvalues-set-and-setdelayed.html</link>
+    <description>
+        OwnValues, Set, and SetDelayed   Set and SetDelayed   Both Set and SetDelayed work by setting definitions on a symbol. What this means in practice is that Set and SetDelayed add replacement patterns to one of the Values lists of the symbol. The lists can be OwnValues , DownValues , UpValues or SubValues . There are also NValues and FormatValues , but these are assigned via alternate interfaces and do not have much effect on real programming.    OwnValues   OwnValues are the most fundamental type of Values . These represent things like the following:      a=10; a:=20;
+    </description>
+    <guid>https://mresources.github.io/tutorial/mathematica-programming/code-structure/ownvalues-set-and-setdelayed.html</guid>
+    <pubDate>Thu 19 Jul 2018 00:18:55</pubDate>
+  </item>
+  <item>
+    <title>Function Values and Definition Clearing</title>
+    <link>https://mresources.github.io/tutorial/mathematica-programming/code-structure/function-values-and-definition-clearing-.html</link>
+    <description>
+        Function Values and Definition Clearing   DownValues   If OwnValues are standard value bindings, DownValues are your basic function bindings:      f[x_]:=x DownValues@f (*Out:*) {HoldPattern[f[x_]]:&gt;x}     This is also why we can define functions as patterns. All that happens is a series of replacement rules are tried, based on the DownValues of the expression. Really, one can imagine that all Mathematica does to execute an expression is apply ReplaceRepeated on the Values .
+    </description>
+    <guid>https://mresources.github.io/tutorial/mathematica-programming/code-structure/function-values-and-definition-clearing-.html</guid>
+    <pubDate>Thu 19 Jul 2018 00:20:38</pubDate>
+  </item>
+  <item>
+    <title>Hold and Evaluation Order</title>
+    <link>https://mresources.github.io/tutorial/mathematica-programming/code-structure/hold-and-evaluation-order.html</link>
+    <description>
+        Hold and Evaluation Order   Weve touched on evaluation order briefly when we introduced UpValues but there are a series of other things to consider. For example say you want to define a function that makes a string of print commands to display. Naively we might try the following:      Column@(ToString /@ {Print[1], Print[2], Print[3]})      1
+    </description>
+    <guid>https://mresources.github.io/tutorial/mathematica-programming/code-structure/hold-and-evaluation-order.html</guid>
+    <pubDate>Thu 28 Dec 2017 00:47:26</pubDate>
+  </item>
+  <item>
+    <title>Procedural Programming</title>
+    <link>https://mresources.github.io/tutorial/mathematica-programming/functional-programming/procedural-programming.html</link>
+    <description>
+        Procedural Programming   In most programming languages (C++, Java, python) we generally use what is called &quot;procedural programming&quot; where we work in a very step-wise fashion. Perhaps the archetype of this is the &quot;for-loop&quot;, the work-horse of standard programming. Mathematica, too, has a For loop. In fact we can use all the standard constructs of procedural programming:      radii={}; For[ i =1, i&lt;10, i++, radii=radii~Append~RandomReal[] ]; radii (*Out:*) {0.914128302537593`,0.3769315906863173`,0.6234932943918361`,0.1322100006893343`,0.1577628966678457`,0.016730303000478397`,0.17548676789547235`,0.8109969085084299`,0.20378370831071368`}     We have a very simple set of steps, here, make a list, radii , initialize a loop variable i , then perform a task (appending a Real to radii ) and incrementing our loop variable i while some test holds ( i &lt; 10 ). Everything is laid out very explicitly and easily to understand. Unfortunately, when writing a large program, having to go through so many steps is a hassle and impedes the development process.
+    </description>
+    <guid>https://mresources.github.io/tutorial/mathematica-programming/functional-programming/procedural-programming.html</guid>
+    <pubDate>Tue 17 Jul 2018 13:41:57</pubDate>
+  </item>
+  <item>
+    <title>Table / Do</title>
+    <link>https://mresources.github.io/tutorial/mathematica-programming/functional-programming/table--do.html</link>
+    <description>
+        Table / Do   Both Table and Do are only barely functional programming, still generally used procedurally, but they are simple, much more efficient alternatives to For and While loops. All they do is loop over a list or range, with optional localized loop variables:   Compare:      For[ i = 1, i&lt; 10^6, i++, PrimeQ@i]// AbsoluteTiming//First (*Out:*) 0.830501`
+    </description>
+    <guid>https://mresources.github.io/tutorial/mathematica-programming/functional-programming/table--do.html</guid>
+    <pubDate>Fri 29 Dec 2017 17:18:59</pubDate>
+  </item>
+  <item>
+    <title>Map / Scan</title>
+    <link>https://mresources.github.io/tutorial/mathematica-programming/functional-programming/map--scan.html</link>
+    <description>
+        Map / Scan   Note that often we can even one-up Table and Do in terms of simplicity, while losing no performance. Map and Scan pass an argument from a list to a function, much as Table and Do iterate over a range or list:      Table[PrimeQ@i,{i,10^6}]// AbsoluteTiming//First (*Out:*) 0.369371`     compared to      Map[PrimeQ,Range[10^6]]// AbsoluteTiming//First (*Out:*) 0.3625`
+    </description>
+    <guid>https://mresources.github.io/tutorial/mathematica-programming/functional-programming/map--scan.html</guid>
+    <pubDate>Fri 29 Dec 2017 17:19:07</pubDate>
+  </item>
+  <item>
+    <title>Nest / NestList</title>
+    <link>https://mresources.github.io/tutorial/mathematica-programming/functional-programming/nest--nestlist.html</link>
+    <description>
+        Nest / NestList   Nest   Often instead of mapping a function over a list we want to map a function in a nested fashion, taking the previous result as the argument of our next call. For this, there is Nest . We could, for instance, implement a random-walk function using this.   First the random vector:      randomVector= Compile[{ {mag,_Real} }, mag*Normalize@RandomReal[{-1,1},3] ];
+    </description>
+    <guid>https://mresources.github.io/tutorial/mathematica-programming/functional-programming/nest--nestlist.html</guid>
+    <pubDate>Fri 29 Dec 2017 23:23:12</pubDate>
+  </item>
+  <item>
+    <title>Fold / FoldList</title>
+    <link>https://mresources.github.io/tutorial/mathematica-programming/functional-programming/fold--foldlist.html</link>
+    <description>
+        Fold / FoldList   Where Nest applies a function in to the result of the previous function call in a nested fashion, Fold and its related functions apply a function to the previous function call and simultaneously map over a list.   As a very simple example we can turn an expression like this:      c[a1,a2,a3,...,an]
+    </description>
+    <guid>https://mresources.github.io/tutorial/mathematica-programming/functional-programming/fold--foldlist.html</guid>
+    <pubDate>Fri 29 Dec 2017 17:19:22</pubDate>
+  </item>
+  <item>
+    <title>FixedPoint and Gradients</title>
+    <link>https://mresources.github.io/tutorial/mathematica-programming/functional-programming/fixedpoint-and-gradients.html</link>
+    <description>
+        FixedPoint and Gradients   Why is this here   While not tightly intertwined with all aspects of functional programming, this does provide an example of the simplicity with which we can do interesting tasks using functional programming.   Using a more procedural paradigm each portion of this code (outside of the basic gradient definitions) would be more involved, more error prone, and also less efficient.    FixedPoint and Gradients
+    </description>
+    <guid>https://mresources.github.io/tutorial/mathematica-programming/functional-programming/fixedpoint-and-gradients.html</guid>
+    <pubDate>Fri 29 Dec 2017 23:22:29</pubDate>
+  </item>
+  <item>
+    <title>Packages</title>
+    <link>https://mresources.github.io/tutorial/mathematica-programming/higher-level-functionality/packages.html</link>
+    <description>
+        Packages   Packages are a convenient way to partition code into chunks that don&#39;t interact with each other needlessly, allowing for simpler programming. Mathematica even has a special package file type, the .m file, which is closer to plain-text than a .nb file.   A package is really just a collection of symbols in a given context, defined so as to interact with only the System context and whichever contexts the user loads, which protects from name overlaps and things.    Definition
+    </description>
+    <guid>https://mresources.github.io/tutorial/mathematica-programming/higher-level-functionality/packages.html</guid>
+    <pubDate>Tue 17 Jul 2018 13:42:56</pubDate>
+  </item>
+  <item>
+    <title>Dynamic</title>
+    <link>https://mresources.github.io/tutorial/mathematica-programming/higher-level-functionality/dynamic.html</link>
+    <description>
+        Dynamic   Everything done up to here has involved static content. Often, though, dynamic content is what you need. I don&#39;t have the time to explain all of Dynamic here, given how many things one can do with Dynamic , but it&#39;s worth going over a few critical things.    Dynamic as formatting head   Dynamic only ever updates while it&#39;s on screen. This is one of it&#39;s key features, as otherwise things could get out of hand. How this works is that Dynamic is just something that the Mathematica front end sees and creates listeners to update.
+    </description>
+    <guid>https://mresources.github.io/tutorial/mathematica-programming/higher-level-functionality/dynamic.html</guid>
+    <pubDate>Tue 17 Jul 2018 14:04:09</pubDate>
+  </item>
+  <item>
+    <title>Formatting</title>
+    <link>https://mresources.github.io/tutorial/mathematica-programming/higher-level-functionality/formatting.html</link>
+    <description>
+        Formatting   Mathematica has a number of useful formatting heads for arbitrary expressions, which fall into two main categories: spatial formatting and styling    Grid, Row, and Column   These are the primary spatial formatting heads. They primarily let you arrange lists nicely:      Column@RandomInteger[20,20] (*Out:*)
+    </description>
+    <guid>https://mresources.github.io/tutorial/mathematica-programming/higher-level-functionality/formatting.html</guid>
+    <pubDate>Fri 29 Dec 2017 23:24:13</pubDate>
+  </item>
+  <item>
+    <title>Interfaces</title>
+    <link>https://mresources.github.io/tutorial/mathematica-programming/higher-level-functionality/interfaces.html</link>
+    <description>
+        Interfaces   Button   Button is as simple as they come. Its just a button. It has an expression it puts on the button and it runs a command and thats it:      Button[ MouseAppearance[&quot;Click Me&quot;, Style[&quot;?&quot;,Large,Bold] ], Print[&quot;Ouch!&quot;]] (*Out:*)
+    </description>
+    <guid>https://mresources.github.io/tutorial/mathematica-programming/higher-level-functionality/interfaces.html</guid>
+    <pubDate>Fri 29 Dec 2017 23:24:03</pubDate>
+  </item>
+  <item>
+    <title>The Front End</title>
+    <link>https://mresources.github.io/tutorial/mathematica-programming/higher-level-functionality/the-front-end.html</link>
+    <description>
+        The Front End   The front end is what most people think of when they think of Mathematica. It&#39;s the collection of cells and notebooks and palettes and windows that you use to program, do your homework, write your resume, etc.   This is separate from the back end, also known as the kernel. That is where all your definitions and variables live. That&#39;s where the your code actually runs.
+    </description>
+    <guid>https://mresources.github.io/tutorial/mathematica-programming/higher-level-functionality/the-front-end.html</guid>
+    <pubDate>Tue 17 Jul 2018 13:19:33</pubDate>
+  </item>
+  <item>
+    <title>Remote Kernels</title>
+    <link>https://mresources.github.io/tutorial/mathematica-programming/higher-level-functionality/remote-kernels.html</link>
+    <description>
+        Remote Kernels   As mentioned in the previous section, in addition to the front-end there is the kernel. One very useful feature of Mathematica, though, is that it allows for multiple kernels to be running.   Remember that the kernel is where your code runs, so if you have a particularly time-intensive calculation running in one kernel it can be convenient to have a secondary kernel running.    Add kernels
+    </description>
+    <guid>https://mresources.github.io/tutorial/mathematica-programming/higher-level-functionality/remote-kernels.html</guid>
+    <pubDate>Mon 16 Jul 2018 18:48:38</pubDate>
+  </item>
+  <item>
+    <title>Compile</title>
+    <link>https://mresources.github.io/tutorial/mathematica-programming/performance-tuning/compile.html</link>
+    <description>
+        Mathematica is what is often called a high-level programming language, because when you are writing programs, you don&#39;t need to worry about how the computer is doing its job. This provides notable gains in simplicity and scalability of large programs, but it comes at the cost of the speed and efficiency of low-level computations.      Basics of Compilation   To get around this Mathematica provides the function Compile which will generate a low-level function that we can then apply with fantastic results. For example, in the section on Nest I provided a random vector generator:   This creates a compiled function that will perform the task at hand, in this case taking a vector of Real numbers and returning a vector. Just so we can see the difference let&#39;s create the same function, uncompiled and compare the two:      randomVector= Compile[{{mag,_Real}}, mag*(#/Norm[#])&amp;@RandomReal[{-1,1},3] ] (*Out:*)
+    </description>
+    <guid>https://mresources.github.io/tutorial/mathematica-programming/performance-tuning/compile.html</guid>
+    <pubDate>Thu 19 Jul 2018 01:20:53</pubDate>
+  </item>
+  <item>
+    <title>Special Array Types</title>
+    <link>https://mresources.github.io/tutorial/mathematica-programming/performance-tuning/special-array-types.html</link>
+    <description>
+        Packed Arrays   Mathematica has a wide variety of low-level optimizations that we never run into in our high-level usage. One of the most useful of these is the concept of the PackedArray .   These are efficiently stored arrays of a single type of object that perform much faster on many simple numerical manipulations than their &quot;unpacked&quot; companions.
+    </description>
+    <guid>https://mresources.github.io/tutorial/mathematica-programming/performance-tuning/special-array-types.html</guid>
+    <pubDate>Thu 19 Jul 2018 03:32:28</pubDate>
+  </item>
+  <item>
+    <title>Packages in Mathematica</title>
+    <link>https://mresources.github.io/tutorial/package-usage-and-development/basics/packages-in-mathematica.html</link>
+    <description>
+        Packages   We talked briefly before about packages in the context of programming, but we haven&#39;t talked about packages as an organizational structure in Mathematica.   As with most languages, packages provide a way to bundle together different code files and resources. By creating a package a developer allows disparate functionality to act as a single unit. There are packages in C, Java, Python, etc. and while they all have subtle differences in setup and exact usage, they all serve the same purpose. In this regard, Mathematica is no different.
+    </description>
+    <guid>https://mresources.github.io/tutorial/package-usage-and-development/basics/packages-in-mathematica.html</guid>
+    <pubDate>Tue 17 Jul 2018 13:10:33</pubDate>
+  </item>
+  <item>
+    <title>Paclets</title>
+    <link>https://mresources.github.io/tutorial/package-usage-and-development/basics/paclets.html</link>
+    <description>
+        Paclets   As we discussed previously, paclets provide a way to distribute code, resources, and other things in Mathematica. They are the native format for this type of distribution and are tightly bound into the system.   Paclets can provide any or all of the following:
+    </description>
+    <guid>https://mresources.github.io/tutorial/package-usage-and-development/basics/paclets.html</guid>
+    <pubDate>Tue 17 Jul 2018 13:10:40</pubDate>
+  </item>
+  <item>
+    <title>Multipackage Paclets</title>
+    <link>https://mresources.github.io/tutorial/package-usage-and-development/higher-level-features/multipackage-paclets.html</link>
+    <description>
+        Paclets in the simplest case provide a single main package with the all of the functions implemented by the paclet. On the other hand, for any sufficiently complex package multiple packages will be needed. However, with the context mechanism Mathematica supplies it is not always clear what the best way to divide code over multiple packages is, so we&#39;ll provide a few different approaches      Predeclared Symbols / Shared Context   In the simplest case, every piece of the package will have the same context and simply directly share symbols. To make this work right, all of the package-level symbols need to be declared before any of the implementation files are loaded. One way this could work is having a directory structure like      MyPaclet + PacletInfo.m Kernel + init.m + Component1.m + Component2.m ... + MyPaclet.m      And then have MyPaclet.m look like:      BeginPackage[&quot;MyPaclet`&quot;] MyPacletSym1::usage=&quot;...&quot;; MyPacletSym2::usage=&quot;...&quot;; ... Begin[&quot;`Private`&quot;]; Get/@ Select[ FileNames[&quot;*.m&quot;, FileNameJoin@{DirectoryName[$InputFileName], &quot;Kernel&quot;}], FileNameTake[#]!=&quot;init.m&quot;&amp; ]; End[]; EndPackage[];
+    </description>
+    <guid>https://mresources.github.io/tutorial/package-usage-and-development/higher-level-features/multipackage-paclets.html</guid>
+    <pubDate>Mon 16 Jul 2018 19:18:14</pubDate>
+  </item>
+  <item>
+    <title>Function Preparation</title>
+    <link>https://mresources.github.io/tutorial/package-usage-and-development/higher-level-features/function-preparation.html</link>
+    <description>
+        Function Preparation   When making a production grade function there are a number of things we need to set:   Usage message templates Syntax hints Autocompletions Bad argument protection
+    </description>
+    <guid>https://mresources.github.io/tutorial/package-usage-and-development/higher-level-features/function-preparation.html</guid>
+    <pubDate>Fri 20 Jul 2018 19:47:38</pubDate>
+  </item>
+  <item>
+    <title>New-Style Packages</title>
+    <link>https://mresources.github.io/tutorial/package-usage-and-development/higher-level-features/newstyle-packages.html</link>
+    <description>
+        New-Style Packages   As of version 10 or so there is a new package format that may be used to more easily handle complicated package setups. It involves a set of static tokens that one uses to tell the system how to distribute definitions and expose contexts and things. These are:   Package  must be at the top of a package file, tells the system it&#39;s a package and the package name PackageExport  tells the system that a given symbol will be exposed at top level PackageScope  tells the system that a given symbol should be exposed at the package level PackageImport  tells the system to import a given context and expose it within that file
+    </description>
+    <guid>https://mresources.github.io/tutorial/package-usage-and-development/higher-level-features/newstyle-packages.html</guid>
+    <pubDate>Tue 17 Jul 2018 17:19:47</pubDate>
+  </item>
+  <item>
+    <title>Special Paclets</title>
+    <link>https://mresources.github.io/tutorial/package-usage-and-development/higher-level-features/special-paclets.html</link>
+    <description>
+        Special Paclet Formats   Mathematica uses a number of specially constructed paclets to drive some of its frameworks. We&#39;ll briefly talk about these frameworks and how they showcase what paclets can do.      Curated Data   The curated data framework has been in Mathematica since version 6. As I understand it, it is the Ur-usage for paclets. These paclets drive almost all the functions ending in Data , like ChemicalData , ElementData , and ExampleData .
+    </description>
+    <guid>https://mresources.github.io/tutorial/package-usage-and-development/higher-level-features/special-paclets.html</guid>
+    <pubDate>Tue 17 Jul 2018 15:43:08</pubDate>
+  </item>
+  <item>
+    <title>PacletInfo and Paclet Structure</title>
+    <link>https://mresources.github.io/tutorial/package-usage-and-development/paclet-development/pacletinfo-and-paclet-structure.html</link>
+    <description>
+        Paclet Structure   We briefly mentioned what a paclet looks like previously, but we didn&#39;t discuss what the different types of paclets will look like and how this will be reflected in the PacletInfo.m file.   First we&#39;ll handle some PacletInfo.m basics then get into more details on how paclet structure is reflected here.    PacletInfo.m
+    </description>
+    <guid>https://mresources.github.io/tutorial/package-usage-and-development/paclet-development/pacletinfo-and-paclet-structure.html</guid>
+    <pubDate>Fri 13 Jul 2018 20:19:17</pubDate>
+  </item>
+  <item>
+    <title>Paclet Development</title>
+    <link>https://mresources.github.io/tutorial/package-usage-and-development/paclet-development/paclet-development.html</link>
+    <description>
+        Paclet Development   Now that we know how a paclet should be structured, we can get into the details of developing a paclet. We&#39;ll make a paclet that has a bit of everything in it to see how it all works.    Directory Structure   Our basic structure will start out looking like      MyPaclet + PacletInfo.m
+    </description>
+    <guid>https://mresources.github.io/tutorial/package-usage-and-development/paclet-development/paclet-development.html</guid>
+    <pubDate>Mon 16 Jul 2018 16:42:59</pubDate>
+  </item>
+  <item>
+    <title>Paclet Distribution</title>
+    <link>https://mresources.github.io/tutorial/package-usage-and-development/paclet-development/paclet-distribution.html</link>
+    <description>
+        Paclet Distribution   We can distribute paclets in either of two ways. We can distribute a packed .paclet file directly or distribute via a server.   Whichever route we go, though, we&#39;ll first need the .paclet file.    Creating a .paclet File
+    </description>
+    <guid>https://mresources.github.io/tutorial/package-usage-and-development/paclet-development/paclet-distribution.html</guid>
+    <pubDate>Tue 17 Jul 2018 13:11:45</pubDate>
+  </item>
+  <item>
+    <title>Tips and Tricks</title>
+    <link>https://mresources.github.io/tutorial/package-usage-and-development/paclet-development/tips-and-tricks.html</link>
+    <description>
+        Paclet Directories   When developing a paclet it can be useful to be able to test code without having to uninstall and reinstall the paclet. That&#39;s why there&#39;s a PacletDirectory* mechanism that makes this easier. We can use the function PacletDirectoryAdd to add another directory in which paclets will be looked for. When we&#39;re done with this we can use PacletDirectoryRemove to clear the directory and test what development looks like without the code being directly accessible.
+    </description>
+    <guid>https://mresources.github.io/tutorial/package-usage-and-development/paclet-development/tips-and-tricks.html</guid>
+    <pubDate>Mon 16 Jul 2018 17:58:10</pubDate>
+  </item>
+  <item>
+    <title>Sample Paclet Structures</title>
+    <link>https://mresources.github.io/tutorial/package-usage-and-development/paclet-development/sample-paclet-structures.html</link>
+    <description>
+        Sample Paclets   It can be unclear what type of directory/paclet info structure we want, so we&#39;ll go over a number of the different common types.   Keep in mind that you can always mix-and-match with these template structures. I&#39;m just showing how a pure, modularized paclet of each type can be constructed.    Code Paclet
+    </description>
+    <guid>https://mresources.github.io/tutorial/package-usage-and-development/paclet-development/sample-paclet-structures.html</guid>
+    <pubDate>Tue 17 Jul 2018 02:56:49</pubDate>
+  </item>
+  <item>
+    <title>Installation</title>
+    <link>https://mresources.github.io/tutorial/package-usage-and-development/paclet-usage/installation.html</link>
+    <description>
+        Paclets   As we discussed previously, paclets provide a way to distribute code, resources, and other things in Mathematica. They are the native format for this type of distribution and are tightly bound into the system.   Paclets can provide any or all of the following:
+    </description>
+    <guid>https://mresources.github.io/tutorial/package-usage-and-development/paclet-usage/installation.html</guid>
+    <pubDate>Fri 13 Jul 2018 20:20:28</pubDate>
+  </item>
+  <item>
+    <title>Paclet Servers</title>
+    <link>https://mresources.github.io/tutorial/package-usage-and-development/paclet-usage/paclet-servers.html</link>
+    <description>
+        Paclet Servers   We talked about the basic paclet installation process before, but one place where paclets are very useful is when setup to be distributed on a server.   Wolfram Research has a main paclet server it distributes its paclets from, but users can also create their own servers. As an example of this, some members of the Mathematica StackExchange have built a custom public paclet server that serves paclets developed by members of the community.    PacletSites
+    </description>
+    <guid>https://mresources.github.io/tutorial/package-usage-and-development/paclet-usage/paclet-servers.html</guid>
+    <pubDate>Fri 13 Jul 2018 20:20:51</pubDate>
+  </item>
+  <item>
+    <title>Overview</title>
+    <link>https://mresources.github.io/tutorial/reference-guides/undocumented-contexts/overview.html</link>
+    <description>
+        Undocumented Functions   Mathematica is a sprawling system and WRI loves to brag about the number of functions in it. Unfortunately it also often under-performs due to this sprawl. Targeted, highly-specialized functions get buried deep in the system, while the most general form of the function exists at the &quot;System`&quot; level.   Therefore, a lot of using Mathematica well comes from taking advantage of the nominally undocumented, unsupported parts of the system.
+    </description>
+    <guid>https://mresources.github.io/tutorial/reference-guides/undocumented-contexts/overview.html</guid>
+    <pubDate>Tue 17 Jul 2018 13:10:09</pubDate>
+  </item>
+  <item>
+    <title>Internal</title>
+    <link>https://mresources.github.io/tutorial/reference-guides/undocumented-contexts/internal.html</link>
+    <description>
+        Internal   The &quot;Internal`&quot; context is one of the core contexts that Mathematica uses. It&#39;s got no targeted focus, but rather appears to be a place where developers dump the cruft they don&#39;t know what to do with.    Bag   Provides a general purpose container that has efficient push and pop behavior. Especially useful in Compile .
+    </description>
+    <guid>https://mresources.github.io/tutorial/reference-guides/undocumented-contexts/internal.html</guid>
+    <pubDate>Tue 17 Jul 2018 01:41:09</pubDate>
+  </item>
+  <item>
+    <title>FrontEnd</title>
+    <link>https://mresources.github.io/tutorial/reference-guides/undocumented-contexts/frontend.html</link>
+    <description>
+        Front End Programming   The Mathematica front-end is almost as complex as the Mathematica kernel, but much worse understood. There are a number of contexts which implement different functionality that it uses.      FrontEnd   The &quot;FrontEnd`&quot; context supplies things like &quot;front-end packets&quot; which tell the front-end to do things.
+    </description>
+    <guid>https://mresources.github.io/tutorial/reference-guides/undocumented-contexts/frontend.html</guid>
+    <pubDate>Fri 12 Apr 2019 20:02:45</pubDate>
+  </item>
+  <item>
+    <title>System`*`</title>
+    <link>https://mresources.github.io/tutorial/reference-guides/undocumented-contexts/system-%2A.html</link>
+    <description>
+        System *   The &quot;System`*`&quot; contexts provide similar functionality to the &quot;Internal`*`&quot; context in terms of low-level usage.   There are a huge number of these contexts, so we&#39;ll just focus on a few of them.      System Private   SetNoEntry
+    </description>
+    <guid>https://mresources.github.io/tutorial/reference-guides/undocumented-contexts/system-%2A.html</guid>
+    <pubDate>Tue 17 Jul 2018 15:12:42</pubDate>
+  </item>
+  <item>
+    <title>Language</title>
+    <link>https://mresources.github.io/tutorial/reference-guides/undocumented-contexts/language.html</link>
+    <description>
+        Language   The &quot;Language`&quot; context is a relatively new addition. We won&#39;t get into it too much since it&#39;s already well handled here      See Also:     https://mathematica.stackexchange.com/questions/165843/language-documentation-project     https://mathematica.stackexchange.com/questions/152823/what-can-the-mutationhandler-functions-do     https://mathematica.stackexchange.com/questions/52414/error-changing-dataset-using-part
+    </description>
+    <guid>https://mresources.github.io/tutorial/reference-guides/undocumented-contexts/language.html</guid>
+    <pubDate>Tue 17 Jul 2018 15:14:58</pubDate>
+  </item>
+  <item>
+    <title>GeneralUtilities</title>
+    <link>https://mresources.github.io/tutorial/reference-guides/undocumented-contexts/generalutilities.html</link>
+    <description>
+        GeneralUtilities   The &quot;GeneralUtilities`&quot; context is new as of version 10. It provides a wide arrary of useful functionality, of which I only know a small part.    PrintDefinitions   PrintDefinitionsLocal   WithMessageHandler   ThrowFailure   ToMessage
+    </description>
+    <guid>https://mresources.github.io/tutorial/reference-guides/undocumented-contexts/generalutilities.html</guid>
+    <pubDate>Tue 17 Jul 2018 15:18:28</pubDate>
+  </item>
+  <item>
+    <title>Package</title>
+    <link>https://mresources.github.io/tutorial/reference-guides/undocumented-contexts/package.html</link>
+    <description>
+        Package   The &quot;Package`&quot; context drives the new-style package system. It&#39;s functions are:    DeclarePackage   Declares a package to be loaded by the autoload mechanism. It&#39;s called like      Package`DeclareLoad[ {syms...}, context, ops ]
+    </description>
+    <guid>https://mresources.github.io/tutorial/reference-guides/undocumented-contexts/package.html</guid>
+    <pubDate>Tue 17 Jul 2018 17:10:04</pubDate>
+  </item>
+  <item>
+    <title>Types</title>
+    <link>https://mresources.github.io/tutorial/using-mathematica/basics/types.html</link>
+    <description>
+        Types   Mathematica has 2 basic types of things in it:   Numbers Words
+    </description>
+    <guid>https://mresources.github.io/tutorial/using-mathematica/basics/types.html</guid>
+    <pubDate>Wed 18 Jul 2018 21:32:46</pubDate>
+  </item>
+  <item>
+    <title>Variables</title>
+    <link>https://mresources.github.io/tutorial/using-mathematica/basics/variables.html</link>
+    <description>
+        Variables   Set   Variables in Mathematica are simple. Just type a name and give it a value with the equals sign ( = ).   Here we&#39;ll set the variable thisIsAVariable     thisIsAVariable=10 (*Out:*) 10
+    </description>
+    <guid>https://mresources.github.io/tutorial/using-mathematica/basics/variables.html</guid>
+    <pubDate>Fri 13 Jul 2018 20:25:16</pubDate>
+  </item>
+  <item>
+    <title>Functions</title>
+    <link>https://mresources.github.io/tutorial/using-mathematica/basics/functions.html</link>
+    <description>
+        Functions   Functions are common to all programming languages. They work exactly like the name suggests. A single input or set of inputs is mapped to a single output.   In Mathematica, functions are defined using variables followed by an underscore square brackets and can be defined with either = or := , which has the same meaning as with variables.
+    </description>
+    <guid>https://mresources.github.io/tutorial/using-mathematica/basics/functions.html</guid>
+    <pubDate>Wed 18 Jul 2018 22:31:03</pubDate>
+  </item>
+  <item>
+    <title>Loops and Scoping</title>
+    <link>https://mresources.github.io/tutorial/using-mathematica/basics/loops-and-scoping.html</link>
+    <description>
+        Loops and Scoping   For most simple tasks (i.e. most computations a chemist has to perform), making a notebook with a bunch of input and output cells is sufficient and possibly even best.   However, sometimes the task at hand is not so simple and so we&#39;ll need to progress to more complex structures.    Table and Do
+    </description>
+    <guid>https://mresources.github.io/tutorial/using-mathematica/basics/loops-and-scoping.html</guid>
+    <pubDate>Wed 18 Jul 2018 23:09:31</pubDate>
+  </item>
+  <item>
+    <title>Errors</title>
+    <link>https://mresources.github.io/tutorial/using-mathematica/basics/errors.html</link>
+    <description>
+        Errors   Obviously code doesn&#39;t always do what one expects it to. Often this is because the programmer or user is trying to do something wrong.   In many programming languages, the code will stop evaluating and the language will return an error. In Mathematica however, one of two things will happen:    Errors as Messages
+    </description>
+    <guid>https://mresources.github.io/tutorial/using-mathematica/basics/errors.html</guid>
+    <pubDate>Fri 20 Jul 2018 19:57:51</pubDate>
+  </item>
+  <item>
+    <title>Clear</title>
+    <link>https://mresources.github.io/tutorial/using-mathematica/basics/clear.html</link>
+    <description>
+        Clear   Before we can really begin working with Mathematica we also need to discuss the function Clear , which can be a life-saver.   It just removes any definitions we&#39;ve given to a symbol, which can be a bigger deal than one might think. Consider the following case:     aVariableIUsedBefore=1000; aVariableIUsedBefore[x_]:=x*10;
+    </description>
+    <guid>https://mresources.github.io/tutorial/using-mathematica/basics/clear.html</guid>
+    <pubDate>Wed 18 Jul 2018 14:29:56</pubDate>
+  </item>
+  <item>
+    <title>Function Aliases</title>
+    <link>https://mresources.github.io/tutorial/using-mathematica/interface/function-aliases.html</link>
+    <description>
+        Function Aliases   Mathematica has a series of useful function aliases that make coding more concise and readable.   Technically, these are called infix operators , a term that also encapsulates + , - , and * , but that&#39;s unimportant for their usage here.    @ (Prefix)
+    </description>
+    <guid>https://mresources.github.io/tutorial/using-mathematica/interface/function-aliases.html</guid>
+    <pubDate>Thu 19 Jul 2018 03:13:21</pubDate>
+  </item>
+  <item>
+    <title>Documentation</title>
+    <link>https://mresources.github.io/tutorial/using-mathematica/interface/documentation.html</link>
+    <description>
+        Documentation   Getting Documentation   Mathematica has a rich, if somewhat overly complex documentation system. To learn about a given symbol there are a few things you can do. Probably the quickest is to use the built in function Definition which prints out the description all the definitions on a symbol. You can do this by putting ? before a symbol      ?Print
+    </description>
+    <guid>https://mresources.github.io/tutorial/using-mathematica/interface/documentation.html</guid>
+    <pubDate>Fri 20 Jul 2018 19:57:32</pubDate>
+  </item>
+  <item>
+    <title>Keyboard Aliases and Special Characters</title>
+    <link>https://mresources.github.io/tutorial/using-mathematica/interface/keyboard-aliases-and-special-characters.html</link>
+    <description>
+        Keyboard Aliases and Special Characters   As mentioned before, there are many useful keyboard aliases. Remember that you get one by pressing  typing an alias and pressing  again.   Here&#39;s a partial list of them:      Pane[ Column[ DeleteCases[ Table[Switch[First@i, &quot;ia&quot;,None, _,First@i-&gt;DisplayForm@Last@i ],{i,InputAliases/.Options[EvaluationNotebook[],InputAliases]}], None ], ItemSize-&gt;{1000, Automatic}, Dividers-&gt;Center ], {250, 250}, Scrollbars-&gt;{False, True} ] (*Out:*)
+    </description>
+    <guid>https://mresources.github.io/tutorial/using-mathematica/interface/keyboard-aliases-and-special-characters.html</guid>
+    <pubDate>Wed 18 Jul 2018 14:30:15</pubDate>
+  </item>
+  <item>
+    <title>Palettes and Toolbars</title>
+    <link>https://mresources.github.io/tutorial/using-mathematica/interface/palettes-and-toolbars.html</link>
+    <description>
+        Palettes and Toolbars   Mathematica provides a series of toolbars and palettes.   Toolbars are found under Window  Toolbar
+    </description>
+    <guid>https://mresources.github.io/tutorial/using-mathematica/interface/palettes-and-toolbars.html</guid>
+    <pubDate>Fri 29 Dec 2017 01:49:00</pubDate>
+  </item>
+  <item>
+    <title>Styles</title>
+    <link>https://mresources.github.io/tutorial/using-mathematica/interface/styles.html</link>
+    <description>
+        Styles   Different cells have different styles, which you can access via the style menu ( Format  Style ) or keyboard shortcuts. Here are a few of them:   There are many other styles of cells and there is even a way to change the styling of cells (as I have done to make this document appear the way it does), but for most projects and purposes, such as homework assignments, these styles suffice.
+    </description>
+    <guid>https://mresources.github.io/tutorial/using-mathematica/interface/styles.html</guid>
+    <pubDate>Wed 18 Jul 2018 14:36:12</pubDate>
+  </item>
+  <item>
+    <title>Plotting</title>
+    <link>https://mresources.github.io/tutorial/using-mathematica/useful-features/plotting.html</link>
+    <description>
+        Plotting   Mathematica has a host of different plot functions, but usually one only needs three of them:    Plot   Plot takes a function as its first argument and a variable and range as its second one. Example:      Plot[Sin[x], {x, -, }, ImageSize -&gt; Small] (*Out:*)
+    </description>
+    <guid>https://mresources.github.io/tutorial/using-mathematica/useful-features/plotting.html</guid>
+    <pubDate>Thu 28 Dec 2017 02:19:10</pubDate>
+  </item>
+  <item>
+    <title>Symbolic Algebra</title>
+    <link>https://mresources.github.io/tutorial/using-mathematica/useful-features/symbolic-algebra.html</link>
+    <description>
+        Symbolic Algebra   As is explained more fully in the Mathematica Programming section, the language Mathematica is built around is almost 100% symbolic, which makes it perfect for algebraic manipulations.   One of the simplest examples of things one can do in Mathematica is generate and combine polynomials:      simplePolynomial[var_,order_]:= Total@Table[RandomInteger[10]*Power[var,n],{n,order}];
+    </description>
+    <guid>https://mresources.github.io/tutorial/using-mathematica/useful-features/symbolic-algebra.html</guid>
+    <pubDate>Fri 20 Jul 2018 20:01:46</pubDate>
+  </item>
+  <item>
+    <title>Calculus</title>
+    <link>https://mresources.github.io/tutorial/using-mathematica/useful-features/calculus.html</link>
+    <description>
+        Calculus   Mathematica is useful for many types of mathematical operations, but of particular use are derivatives and integrals.    Derivatives   Derivatives can be taken using either the function D or the alias pd.
+    </description>
+    <guid>https://mresources.github.io/tutorial/using-mathematica/useful-features/calculus.html</guid>
+    <pubDate>Fri 20 Jul 2018 23:19:02</pubDate>
+  </item>
+  <item>
+    <title>Built-in Data and Units</title>
+    <link>https://mresources.github.io/tutorial/using-mathematica/useful-features/builtin-data-and-units.html</link>
+    <description>
+        Built-in Data and Units   Mathematica provides access to a lot of data, most useful for chemistry is the built-in chemical, element, and isotope data and the physical constants it knows about    ElementData   ElementData is a function that gets data on an element from Mathematica&#39;s built in servers. Here&#39;s a way to get the atomic number of an element:      ElementData[&quot;W&quot;, &quot;AtomicNumber&quot;] (*Out:*) 74
+    </description>
+    <guid>https://mresources.github.io/tutorial/using-mathematica/useful-features/builtin-data-and-units.html</guid>
+    <pubDate>Wed 18 Jul 2018 23:43:14</pubDate>
+  </item>
+  </channel>
+</rss>

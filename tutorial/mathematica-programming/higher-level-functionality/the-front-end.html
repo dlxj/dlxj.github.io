@@ -1,0 +1,1276 @@
+<!DOCTYPE html>
+<html>
+<title>
+        The Front End
+</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link
+      rel='apple-touch-icon'
+      href='https://mresources.github.io/tutorial/apple-touch-icon.png'
+      sizes='180x180'
+  >
+<link
+      rel='icon'
+      href='https://mresources.github.io/tutorial/favicon-32x32.png'
+      sizes='32x32'
+  >
+<link
+      rel='icon'
+      href='https://mresources.github.io/tutorial/favicon-16x16.png'
+      sizes='16x16'
+  >
+<link
+      rel='manifest'
+      href='https://mresources.github.io/tutorial/manifest.json'
+  >
+<link
+      rel='stylesheet'
+      href='https://mresources.github.io/tutorial/theme/css/pygments/default.min.css'
+  >
+<link
+      rel='stylesheet'
+      href='https://mresources.github.io/tutorial/theme/css/bootstrap.css'
+  >
+<link
+      rel='stylesheet'
+      href='https://mresources.github.io/tutorial/theme/css/font-awesome.css'
+  >
+<link
+      rel='stylesheet'
+      href='https://www.w3schools.com/w3css/4/w3.css'
+  >
+<link
+      rel='stylesheet'
+      href='https://fonts.googleapis.com/css?family=Robot'
+  >
+<link
+      rel='stylesheet'
+      href='https://fonts.googleapis.com/css?family=Montserrat'
+  >
+<link
+      rel='stylesheet'
+      href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'
+  >
+<link
+      rel='stylesheet'
+      href='https://fonts.googleapis.com/css?family=Source+Code+Pro'
+  >
+<link
+      rel='stylesheet'
+      href='https://reference.wolfram.com/language-assets/css/special-styles.css'
+  >
+<link
+      rel='stylesheet'
+      href='https://mresources.github.io/tutorial/theme/css/common.css'
+  >
+<link
+      rel='stylesheet'
+      href='https://mresources.github.io/tutorial/theme/css/style.css'
+  >
+      <meta name="description" content="">
+  <link href="https://mresources.github.io/tutorial/theme/prettify/styles/prettify-mma.min.css" rel="stylesheet">
+  <script src="https://mresources.github.io/tutorial/theme/prettify/src/prettify.js"></script>
+  <script src="https://mresources.github.io/tutorial/theme/prettify/src/lang-mma.min.js"></script>
+  <script
+    type="text/javascript" async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=TeX-MML-AM_CHTML">
+  </script>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      // enable $ for inline math -> use \$ for ordinary dollar-sign
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true
+      }
+    });
+  </script>
+  <script>
+    function accordionOpen() {
+      var thumb = document.getElementById("accordion-thumb");
+      var nb = document.getElementById("accordion-notebook");
+      thumb.onclick= accordionClose;
+      nb.classList.add("accordion-visible");
+      nb.classList.remove("accordion-hidden");
+      thumb.classList.add("accordion-thumb-visible");
+      thumb.classList.remove("accordion-thumb-hidden");
+      }
+    function accordionClose() {
+      var thumb = document.getElementById("accordion-thumb");
+      var nb = document.getElementById("accordion-notebook");
+      thumb.onclick= accordionOpen;
+      nb.classList.remove("accordion-visible");
+      nb.classList.add("accordion-hidden");
+      thumb.classList.remove("accordion-thumb-visible");
+      thumb.classList.add("accordion-thumb-hidden")
+      }
+  </script>
+<style>
+.w3-sidebar a {font-family: "Roboto", sans-serif}
+body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
+</style>
+<script>
+  (function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function() {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o);
+    a.async = 1;
+    a.src = g;
+    m = s.getElementsByTagName(o)[0];
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+  ga('create', 'UA-103560228-2', 'auto');
+  ga('send', 'pageview');
+</script>
+<body
+  class="w3-content"
+  onload="
+  PR.prettyPrint();
+"
+  >
+<!-- Sidebar/menu -->
+<nav
+  class="w3-sidebar w3-bar-block w3-white w3-collapse w3-top sidebar"
+  style="z-index:3;width:250px"
+  id="mySidebar"
+  >
+  <div class="w3-container w3-display-container w3-padding-16">
+    <div
+      onclick="w3_close()"
+      class="fa fa-remove w3-hide-large w3-button w3-display-topright"
+      id="menu-thumb"
+      >
+    </div>
+  </div>
+  <h3 class="w3-wide w3-bar-item">
+<a
+      href='https://mresources.github.io/tutorial/'
+  >
+      Home</a>
+<div class="search-box">
+  <script>
+    var search_SiteURL = "https://mresources.github.io/tutorial"
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css">
+  <link rel="stylesheet" href="https://mresources.github.io/tutorial/theme/tipuesearch/tipuesearch.css">
+  <form action="https://mresources.github.io/tutorial/search.html">
+    <div class="tipue_search_group">
+      <input
+        type="text"
+        name="q"
+        id="tipue_search_input"
+        pattern=".{3,}"
+        title="At least 3 characters" required>
+      <button type="submit" class="tipue_search_button">
+        <div class="tipue_search_icon">&#9906;</div>
+      </button>
+    </div>
+  </form>
+</div>
+  </h3>
+  <div class="w3-large w3-text-grey">
+    <div class="w3-bar-block">
+      <ul class="list-inline row" id="">
+<li class="list-inline-item">
+<a
+      class='nav-bar-link w3-bar-item w3-medium w3-button'
+      href='https://mresources.github.io/tutorial/pages/about.html'
+  >
+      About</a>
+</li>
+<li class="list-inline-item">
+<a
+      class='nav-bar-link w3-bar-item w3-medium w3-button'
+      href='https://mresources.github.io/tutorial/pages/toc.html'
+  >
+      Table Of Contents</a>
+</li>
+<li class="list-inline-item">
+<a
+      class='nav-bar-link w3-bar-item w3-medium w3-button'
+      href='https://mresources.github.io/tutorial/categories.html'
+  >
+      Categories</a>
+</li>
+<li class="list-inline-item">
+<a
+      class='nav-bar-link w3-bar-item w3-medium w3-button'
+      href='https://mresources.github.io/tutorial/tags.html'
+  >
+      Tags</a>
+</li>
+<li class="list-inline-item">
+<a
+      class='nav-bar-link w3-bar-item w3-medium w3-button'
+      href='https://mresources.github.io/tutorial/pages/contact.html'
+  >
+      Contact</a>
+</li>
+</ul>
+    </div>
+  </div>
+  <hr>
+  <div class="w3-padding-64 w3-large w3-text-grey" style="font-weight:bold">
+    <ul>
+        <h4 class="w3-bar-item index-section">
+          Using Mathematica
+        </h4>
+        <h5 class="w3-bar-item w3-padding-medium index-subsection">
+          Basics
+        </h5>
+      <a
+        href='https://mresources.github.io/tutorial/using-mathematica/basics/types.html'
+        class=
+          'w3-bar-item w3-bar-block w3-padding-large w3-medium w3-button
+            '
+         >
+        Types
+      </a>
+      <a
+        href='https://mresources.github.io/tutorial/using-mathematica/basics/variables.html'
+        class=
+          'w3-bar-item w3-bar-block w3-padding-large w3-medium w3-button
+            '
+         >
+        Variables
+      </a>
+      <a
+        href='https://mresources.github.io/tutorial/using-mathematica/basics/functions.html'
+        class=
+          'w3-bar-item w3-bar-block w3-padding-large w3-medium w3-button
+            '
+         >
+        Functions
+      </a>
+      <a
+        href='https://mresources.github.io/tutorial/using-mathematica/basics/loops-and-scoping.html'
+        class=
+          'w3-bar-item w3-bar-block w3-padding-large w3-medium w3-button
+            '
+         >
+        Loops and Scoping
+      </a>
+      <a
+        href='https://mresources.github.io/tutorial/using-mathematica/basics/errors.html'
+        class=
+          'w3-bar-item w3-bar-block w3-padding-large w3-medium w3-button
+            '
+         >
+        Errors
+      </a>
+      <a
+        href='https://mresources.github.io/tutorial/using-mathematica/basics/clear.html'
+        class=
+          'w3-bar-item w3-bar-block w3-padding-large w3-medium w3-button
+            '
+         >
+        Clear
+      </a>
+        <h5 class="w3-bar-item w3-padding-medium index-subsection">
+          Interface
+        </h5>
+      <a
+        href='https://mresources.github.io/tutorial/using-mathematica/interface/function-aliases.html'
+        class=
+          'w3-bar-item w3-bar-block w3-padding-large w3-medium w3-button
+            '
+         >
+        Function Aliases
+      </a>
+      <a
+        href='https://mresources.github.io/tutorial/using-mathematica/interface/documentation.html'
+        class=
+          'w3-bar-item w3-bar-block w3-padding-large w3-medium w3-button
+            '
+         >
+        Documentation
+      </a>
+      <a
+        href='https://mresources.github.io/tutorial/using-mathematica/interface/keyboard-aliases-and-special-characters.html'
+        class=
+          'w3-bar-item w3-bar-block w3-padding-large w3-medium w3-button
+            '
+         >
+        Keyboard Aliases and Special Characters
+      </a>
+      <a
+        href='https://mresources.github.io/tutorial/using-mathematica/interface/palettes-and-toolbars.html'
+        class=
+          'w3-bar-item w3-bar-block w3-padding-large w3-medium w3-button
+            '
+         >
+        Palettes and Toolbars
+      </a>
+      <a
+        href='https://mresources.github.io/tutorial/using-mathematica/interface/styles.html'
+        class=
+          'w3-bar-item w3-bar-block w3-padding-large w3-medium w3-button
+            '
+         >
+        Styles
+      </a>
+        <h5 class="w3-bar-item w3-padding-medium index-subsection">
+          Useful Features
+        </h5>
+      <a
+        href='https://mresources.github.io/tutorial/using-mathematica/useful-features/plotting.html'
+        class=
+          'w3-bar-item w3-bar-block w3-padding-large w3-medium w3-button
+            '
+         >
+        Plotting
+      </a>
+      <a
+        href='https://mresources.github.io/tutorial/using-mathematica/useful-features/symbolic-algebra.html'
+        class=
+          'w3-bar-item w3-bar-block w3-padding-large w3-medium w3-button
+            '
+         >
+        Symbolic Algebra
+      </a>
+      <a
+        href='https://mresources.github.io/tutorial/using-mathematica/useful-features/calculus.html'
+        class=
+          'w3-bar-item w3-bar-block w3-padding-large w3-medium w3-button
+            '
+         >
+        Calculus
+      </a>
+      <a
+        href='https://mresources.github.io/tutorial/using-mathematica/useful-features/builtin-data-and-units.html'
+        class=
+          'w3-bar-item w3-bar-block w3-padding-large w3-medium w3-button
+            '
+         >
+        Built-in Data and Units
+      </a>
+        <h4 class="w3-bar-item index-section">
+          Mathematica Programming
+        </h4>
+        <h5 class="w3-bar-item w3-padding-medium index-subsection">
+          Code Structure
+        </h5>
+      <a
+        href='https://mresources.github.io/tutorial/mathematica-programming/code-structure/symbols-and-expressions.html'
+        class=
+          'w3-bar-item w3-bar-block w3-padding-large w3-medium w3-button
+            '
+         >
+        Symbols and Expressions
+      </a>
+      <a
+        href='https://mresources.github.io/tutorial/mathematica-programming/code-structure/expressions-structure.html'
+        class=
+          'w3-bar-item w3-bar-block w3-padding-large w3-medium w3-button
+            '
+         >
+        Expressions Structure
+      </a>
+      <a
+        href='https://mresources.github.io/tutorial/mathematica-programming/code-structure/patterns.html'
+        class=
+          'w3-bar-item w3-bar-block w3-padding-large w3-medium w3-button
+            '
+         >
+        Patterns
+      </a>
+      <a
+        href='https://mresources.github.io/tutorial/mathematica-programming/code-structure/replacement-patterns.html'
+        class=
+          'w3-bar-item w3-bar-block w3-padding-large w3-medium w3-button
+            '
+         >
+        Replacement Patterns
+      </a>
+      <a
+        href='https://mresources.github.io/tutorial/mathematica-programming/code-structure/functions.html'
+        class=
+          'w3-bar-item w3-bar-block w3-padding-large w3-medium w3-button
+            '
+         >
+        Functions
+      </a>
+      <a
+        href='https://mresources.github.io/tutorial/mathematica-programming/code-structure/contexts.html'
+        class=
+          'w3-bar-item w3-bar-block w3-padding-large w3-medium w3-button
+            '
+         >
+        Contexts
+      </a>
+      <a
+        href='https://mresources.github.io/tutorial/mathematica-programming/code-structure/ownvalues-set-and-setdelayed.html'
+        class=
+          'w3-bar-item w3-bar-block w3-padding-large w3-medium w3-button
+            '
+         >
+        OwnValues, Set, and SetDelayed
+      </a>
+      <a
+        href='https://mresources.github.io/tutorial/mathematica-programming/code-structure/function-values-and-definition-clearing-.html'
+        class=
+          'w3-bar-item w3-bar-block w3-padding-large w3-medium w3-button
+            '
+         >
+        Function Values and Definition Clearing
+      </a>
+      <a
+        href='https://mresources.github.io/tutorial/mathematica-programming/code-structure/hold-and-evaluation-order.html'
+        class=
+          'w3-bar-item w3-bar-block w3-padding-large w3-medium w3-button
+            '
+         >
+        Hold and Evaluation Order
+      </a>
+      <a
+        href='https://mresources.github.io/tutorial/mathematica-programming/code-structure/scoping-revisited.html'
+        class=
+          'w3-bar-item w3-bar-block w3-padding-large w3-medium w3-button
+            '
+         >
+        Scoping Revisited
+      </a>
+      <a
+        href='https://mresources.github.io/tutorial/mathematica-programming/code-structure/flow-control.html'
+        class=
+          'w3-bar-item w3-bar-block w3-padding-large w3-medium w3-button
+            '
+         >
+        Flow Control
+      </a>
+      <a
+        href='https://mresources.github.io/tutorial/mathematica-programming/code-structure/error-handling.html'
+        class=
+          'w3-bar-item w3-bar-block w3-padding-large w3-medium w3-button
+            '
+         >
+        Error Handling
+      </a>
+        <h5 class="w3-bar-item w3-padding-medium index-subsection">
+          Higher-Level Functionality
+        </h5>
+      <a
+        href='https://mresources.github.io/tutorial/mathematica-programming/higher-level-functionality/packages.html'
+        class=
+          'w3-bar-item w3-bar-block w3-padding-large w3-medium w3-button
+            '
+         >
+        Packages
+      </a>
+      <a
+        href='https://mresources.github.io/tutorial/mathematica-programming/higher-level-functionality/dynamic.html'
+        class=
+          'w3-bar-item w3-bar-block w3-padding-large w3-medium w3-button
+            '
+         >
+        Dynamic
+      </a>
+      <a
+        href='https://mresources.github.io/tutorial/mathematica-programming/higher-level-functionality/formatting.html'
+        class=
+          'w3-bar-item w3-bar-block w3-padding-large w3-medium w3-button
+            '
+         >
+        Formatting
+      </a>
+      <a
+        href='https://mresources.github.io/tutorial/mathematica-programming/higher-level-functionality/interfaces.html'
+        class=
+          'w3-bar-item w3-bar-block w3-padding-large w3-medium w3-button
+            '
+         >
+        Interfaces
+      </a>
+      <a
+        href='https://mresources.github.io/tutorial/mathematica-programming/higher-level-functionality/the-front-end.html'
+        class=
+          'w3-bar-item w3-bar-block w3-padding-large w3-medium w3-button
+            '
+         >
+        The Front End
+      </a>
+      <a
+        href='https://mresources.github.io/tutorial/mathematica-programming/higher-level-functionality/remote-kernels.html'
+        class=
+          'w3-bar-item w3-bar-block w3-padding-large w3-medium w3-button
+            '
+         >
+        Remote Kernels
+      </a>
+        <h5 class="w3-bar-item w3-padding-medium index-subsection">
+          Assorted Tricks
+        </h5>
+      <a
+        href='https://mresources.github.io/tutorial/mathematica-programming/assorted-tricks/trottstrzebonski.html'
+        class=
+          'w3-bar-item w3-bar-block w3-padding-large w3-medium w3-button
+            '
+         >
+        Trott-Strzebonski
+      </a>
+      <a
+        href='https://mresources.github.io/tutorial/mathematica-programming/assorted-tricks/villegasgayley.html'
+        class=
+          'w3-bar-item w3-bar-block w3-padding-large w3-medium w3-button
+            '
+         >
+        Villegas-Gayley
+      </a>
+      <a
+        href='https://mresources.github.io/tutorial/mathematica-programming/assorted-tricks/import-and-readlist.html'
+        class=
+          'w3-bar-item w3-bar-block w3-padding-large w3-medium w3-button
+            '
+         >
+        Import and ReadList
+      </a>
+      <a
+        href='https://mresources.github.io/tutorial/mathematica-programming/assorted-tricks/currentvalue-and-frontendtokens.html'
+        class=
+          'w3-bar-item w3-bar-block w3-padding-large w3-medium w3-button
+            '
+         >
+        CurrentValue and FrontEndTokens
+      </a>
+      <a
+        href='https://mresources.github.io/tutorial/mathematica-programming/assorted-tricks/info-scraping.html'
+        class=
+          'w3-bar-item w3-bar-block w3-padding-large w3-medium w3-button
+            '
+         >
+        Info Scraping
+      </a>
+      <a
+        href='https://mresources.github.io/tutorial/mathematica-programming/assorted-tricks/object-oriented-programming.html'
+        class=
+          'w3-bar-item w3-bar-block w3-padding-large w3-medium w3-button
+            '
+         >
+        Object Oriented Programming
+      </a>
+        <h5 class="w3-bar-item w3-padding-medium index-subsection">
+          Functional Programming
+        </h5>
+      <a
+        href='https://mresources.github.io/tutorial/mathematica-programming/functional-programming/procedural-programming.html'
+        class=
+          'w3-bar-item w3-bar-block w3-padding-large w3-medium w3-button
+            '
+         >
+        Procedural Programming
+      </a>
+      <a
+        href='https://mresources.github.io/tutorial/mathematica-programming/functional-programming/table--do.html'
+        class=
+          'w3-bar-item w3-bar-block w3-padding-large w3-medium w3-button
+            '
+         >
+        Table / Do
+      </a>
+      <a
+        href='https://mresources.github.io/tutorial/mathematica-programming/functional-programming/map--scan.html'
+        class=
+          'w3-bar-item w3-bar-block w3-padding-large w3-medium w3-button
+            '
+         >
+        Map / Scan
+      </a>
+      <a
+        href='https://mresources.github.io/tutorial/mathematica-programming/functional-programming/nest--nestlist.html'
+        class=
+          'w3-bar-item w3-bar-block w3-padding-large w3-medium w3-button
+            '
+         >
+        Nest / NestList
+      </a>
+      <a
+        href='https://mresources.github.io/tutorial/mathematica-programming/functional-programming/fold--foldlist.html'
+        class=
+          'w3-bar-item w3-bar-block w3-padding-large w3-medium w3-button
+            '
+         >
+        Fold / FoldList
+      </a>
+      <a
+        href='https://mresources.github.io/tutorial/mathematica-programming/functional-programming/fixedpoint-and-gradients.html'
+        class=
+          'w3-bar-item w3-bar-block w3-padding-large w3-medium w3-button
+            '
+         >
+        FixedPoint and Gradients
+      </a>
+        <h5 class="w3-bar-item w3-padding-medium index-subsection">
+          Performance Tuning
+        </h5>
+      <a
+        href='https://mresources.github.io/tutorial/mathematica-programming/performance-tuning/compile.html'
+        class=
+          'w3-bar-item w3-bar-block w3-padding-large w3-medium w3-button
+            '
+         >
+        Compile
+      </a>
+      <a
+        href='https://mresources.github.io/tutorial/mathematica-programming/performance-tuning/special-array-types.html'
+        class=
+          'w3-bar-item w3-bar-block w3-padding-large w3-medium w3-button
+            '
+         >
+        Special Array Types
+      </a>
+        <h4 class="w3-bar-item index-section">
+          Package Usage and Development
+        </h4>
+        <h5 class="w3-bar-item w3-padding-medium index-subsection">
+          Overview
+        </h5>
+      <a
+        href='https://mresources.github.io/tutorial/package-usage-and-development/basics/packages-in-mathematica.html'
+        class=
+          'w3-bar-item w3-bar-block w3-padding-large w3-medium w3-button
+            '
+         >
+        Packages in Mathematica
+      </a>
+      <a
+        href='https://mresources.github.io/tutorial/package-usage-and-development/basics/paclets.html'
+        class=
+          'w3-bar-item w3-bar-block w3-padding-large w3-medium w3-button
+            '
+         >
+        Paclets
+      </a>
+        <h5 class="w3-bar-item w3-padding-medium index-subsection">
+          Paclet Usage
+        </h5>
+      <a
+        href='https://mresources.github.io/tutorial/package-usage-and-development/paclet-usage/installation.html'
+        class=
+          'w3-bar-item w3-bar-block w3-padding-large w3-medium w3-button
+            '
+         >
+        Installation
+      </a>
+      <a
+        href='https://mresources.github.io/tutorial/package-usage-and-development/paclet-usage/paclet-servers.html'
+        class=
+          'w3-bar-item w3-bar-block w3-padding-large w3-medium w3-button
+            '
+         >
+        Paclet Servers
+      </a>
+        <h5 class="w3-bar-item w3-padding-medium index-subsection">
+          Paclet Development
+        </h5>
+      <a
+        href='https://mresources.github.io/tutorial/package-usage-and-development/paclet-development/pacletinfo-and-paclet-structure.html'
+        class=
+          'w3-bar-item w3-bar-block w3-padding-large w3-medium w3-button
+            '
+         >
+        PacletInfo and Paclet Structure
+      </a>
+      <a
+        href='https://mresources.github.io/tutorial/package-usage-and-development/paclet-development/paclet-development.html'
+        class=
+          'w3-bar-item w3-bar-block w3-padding-large w3-medium w3-button
+            '
+         >
+        Paclet Development
+      </a>
+      <a
+        href='https://mresources.github.io/tutorial/package-usage-and-development/paclet-development/paclet-distribution.html'
+        class=
+          'w3-bar-item w3-bar-block w3-padding-large w3-medium w3-button
+            '
+         >
+        Paclet Distribution
+      </a>
+      <a
+        href='https://mresources.github.io/tutorial/package-usage-and-development/paclet-development/tips-and-tricks.html'
+        class=
+          'w3-bar-item w3-bar-block w3-padding-large w3-medium w3-button
+            '
+         >
+        Tips and Tricks
+      </a>
+      <a
+        href='https://mresources.github.io/tutorial/package-usage-and-development/paclet-development/sample-paclet-structures.html'
+        class=
+          'w3-bar-item w3-bar-block w3-padding-large w3-medium w3-button
+            '
+         >
+        Sample Paclet Structures
+      </a>
+        <h5 class="w3-bar-item w3-padding-medium index-subsection">
+          Higher-Level Features
+        </h5>
+      <a
+        href='https://mresources.github.io/tutorial/package-usage-and-development/higher-level-features/multipackage-paclets.html'
+        class=
+          'w3-bar-item w3-bar-block w3-padding-large w3-medium w3-button
+            '
+         >
+        Multipackage Paclets
+      </a>
+      <a
+        href='https://mresources.github.io/tutorial/package-usage-and-development/higher-level-features/function-preparation.html'
+        class=
+          'w3-bar-item w3-bar-block w3-padding-large w3-medium w3-button
+            '
+         >
+        Function Preparation
+      </a>
+      <a
+        href='https://mresources.github.io/tutorial/package-usage-and-development/higher-level-features/newstyle-packages.html'
+        class=
+          'w3-bar-item w3-bar-block w3-padding-large w3-medium w3-button
+            '
+         >
+        New-Style Packages
+      </a>
+      <a
+        href='https://mresources.github.io/tutorial/package-usage-and-development/higher-level-features/special-paclets.html'
+        class=
+          'w3-bar-item w3-bar-block w3-padding-large w3-medium w3-button
+            '
+         >
+        Special Paclets
+      </a>
+        <h4 class="w3-bar-item index-section">
+          Reference Guides
+        </h4>
+        <h5 class="w3-bar-item w3-padding-medium index-subsection">
+          Undocumented Contexts
+        </h5>
+      <a
+        href='https://mresources.github.io/tutorial/reference-guides/undocumented-contexts/overview.html'
+        class=
+          'w3-bar-item w3-bar-block w3-padding-large w3-medium w3-button
+            '
+         >
+        Overview
+      </a>
+      <a
+        href='https://mresources.github.io/tutorial/reference-guides/undocumented-contexts/internal.html'
+        class=
+          'w3-bar-item w3-bar-block w3-padding-large w3-medium w3-button
+            '
+         >
+        Internal
+      </a>
+      <a
+        href='https://mresources.github.io/tutorial/reference-guides/undocumented-contexts/frontend.html'
+        class=
+          'w3-bar-item w3-bar-block w3-padding-large w3-medium w3-button
+            '
+         >
+        FrontEnd
+      </a>
+      <a
+        href='https://mresources.github.io/tutorial/reference-guides/undocumented-contexts/system-%2A.html'
+        class=
+          'w3-bar-item w3-bar-block w3-padding-large w3-medium w3-button
+            '
+         >
+        System`*`
+      </a>
+      <a
+        href='https://mresources.github.io/tutorial/reference-guides/undocumented-contexts/language.html'
+        class=
+          'w3-bar-item w3-bar-block w3-padding-large w3-medium w3-button
+            '
+         >
+        Language
+      </a>
+      <a
+        href='https://mresources.github.io/tutorial/reference-guides/undocumented-contexts/generalutilities.html'
+        class=
+          'w3-bar-item w3-bar-block w3-padding-large w3-medium w3-button
+            '
+         >
+        GeneralUtilities
+      </a>
+      <a
+        href='https://mresources.github.io/tutorial/reference-guides/undocumented-contexts/package.html'
+        class=
+          'w3-bar-item w3-bar-block w3-padding-large w3-medium w3-button
+            '
+         >
+        Package
+      </a>
+    </ul>
+  </div>
+</nav>
+<!-- Top menu on small screens -->
+<header class="w3-bar w3-top w3-hide-large w3-black w3-xlarge">
+  <div class="w3-bar-item w3-padding-24 w3-wide">
+<a
+      class='w3-text-white'
+      href='https://mresources.github.io/tutorial/'
+  >
+      Home</a>
+  </div>
+  <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding-24 w3-right" onclick="w3_open()"><i class="fa fa-bars"></i></a>
+</header>
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-left:250px">
+  <!-- Push down content on small screens -->
+  <div class="w3-hide-large" style="margin-top:83px"></div>
+    <div class="main" id="main-content">
+    <div class="main-content">
+      <div class="centered">
+        <!-- Page Header -->
+        <div class="w3-display-container w3-content w3-wide" id="header">
+        </div>
+        <!-- Main Body -->
+  <article class="article">
+        <h2>
+          Mathematica Programming &raquo; Higher-Level Functionality
+        </h2>
+    <div class="article content">
+      <a shape='rect' id='the-front-end' style='width:0;height:0;margin:0;padding:0;'>&#8204;</a>
+<h2 id='h21'> The Front End</h2>
+<p id='p2'>The front end is what most people think of when they think of Mathematica. It&apos;s the collection of cells and notebooks and palettes and windows that you use to program, do your homework, write your resume, etc.</p>
+<p id='p3'>This is separate from the back end, also known as the kernel. That is where all your definitions and variables live. That&apos;s where the your code actually runs.</p>
+<p id='p4'>The two communicate, but it&apos;s important to understand that they are separate entities altogether
+</p>
+<h3 id='h35'> The Front End</h3>
+<p id='p6'>The front end can be accessed via the symbol  <code>$FrontEnd</code> . This is the most global way to set options, change formatting, etc. For example, we can get the current default window size:
+</p>
+<pre class='mma-input prettyprint lang-mma'
+    id='pre7'>
+ <code>WindowSize/.Options[$FrontEnd,WindowSize]</code>
+</pre>
+<pre class='mma-output prettyprint lang-mma'
+    id='pre8'>
+ <code>{808,755}</code>
+</pre>
+<p id='p9'>We can also change this, but often the better thing to do is just to change the value on the symbol  <code>$FrontEndSession</code>  which only applies the changes for the current session.  <code>$FrontEnd</code>  keeps track of any changes applied and caches them permanently.
+</p>
+<pre class='mma-input prettyprint lang-mma'
+    id='pre10'>
+ <code>SetOptions[$FrontEndSession,WindowSize-&gt;{100,100}]</code>
+</pre>
+<p id='p11'>This will change how big any windows we make appear, although it will not change the size of windows made with  <code>File <span>&#9654;</span> New</code>  or <span style='color: gray; font-size: 10px; border: solid 1px gray;'><kbd>CMD</kbd></span>  <code>+** ****N**</code> . We can test this out using  <code>CreateDocument</code>  though:
+</p>
+<pre class='mma-input prettyprint lang-mma'
+    id='pre12'>
+ <code>CreateDocument[]</code>
+</pre>
+<p id='p13'>We can also remove this:
+</p>
+<pre class='mma-input prettyprint lang-mma'
+    id='pre14'>
+ <code>SetOptions[$FrontEndSession,WindowSize-&gt;Inherited]</code>
+</pre>
+<p id='p15'>Since  <code>$FrontEndSession</code>  inherits from  <code>$FrontEnd</code>  this reverts the change
+</p>
+<h3 id='h316'> Notebooks</h3>
+<p id='p17'>A notebook is any window Mathematica creates. We can find all of the notebooks:
+</p>
+<pre class='mma-input prettyprint lang-mma'
+    id='pre18'>
+ <code>Notebooks[]</code>
+</pre>
+<p id='p19'>Or notebooks matching a name:
+</p>
+<pre class='mma-input prettyprint lang-mma'
+    id='pre20'>
+ <code>Notebooks[&quot;Mathematica For Chemists&quot;]</code>
+</pre>
+<p id='p21'>A notebook is represented by a  <code>NotebookObject</code> . A  <code>NotebookObject</code>  only exists for a given front end session. We can see why if we look at its  <code>InputForm</code> :
+</p>
+<pre class='mma-input prettyprint lang-mma'
+    id='pre22'>
+ <code>CreateDocument[]//InputForm</code>
+</pre>
+<p id='p23'>This is a symbolic form that represents an object communicating with the front end specified by the  <code>FrontEndObject</code>  ( <code>LinkObject</code>  refers to a link to a kernel process<span class='special-character LongDash'>&#8212;</span>something beyond the scope of what we&apos;re working with here). Its ID is the last argument. Every time we create a new notebook the ID increments, so that within a given front end session no two notebooks will ever have the same ID.</p>
+<p id='p24'>Mathematica has a special notebook that always exists:
+</p>
+<pre class='mma-input prettyprint lang-mma'
+    id='pre25'>
+ <code>First@Notebooks@&quot;Messages&quot;</code>
+</pre>
+<p id='p26'>Mathematica will dump all messages generated without a notebook to this notebook. Generally this means dynamically generated messages<span class='special-character LongDash'>&#8212;</span>that is, messages generated by  <code>Dynamic</code>  or other front-end events.</p>
+<p id='p27'>In a given evaluation, Mathematica keeps track of the notebook that started it. This can be obtained as follows:
+</p>
+<pre class='mma-input prettyprint lang-mma'
+    id='pre28'>
+ <code>EvaluationNotebook[]</code>
+</pre>
+<p id='p29'>Note that this applies even in the case of  <code>Dynamic</code>  evaluations:
+</p>
+<pre class='mma-input prettyprint lang-mma'
+    id='pre30'>
+ <code>Dynamic@EvaluationNotebook[]//
+CreateDocument[#,
+WindowSize-&gt;Small,
+WindowTitle-&gt;&quot;Different notebook&quot;]&amp;;
+Dynamic@EvaluationNotebook[]</code>
+</pre>
+<p id='p31'>In most cases this is the most useful notebook to have, but there are a number of others that may be of interest.</p>
+<p id='p32'>This will give the notebook that currently has keyboard focus. This is very useful when making palettes.
+</p>
+<pre class='mma-input prettyprint lang-mma'
+    id='pre33'>
+ <code>InputNotebook[]</code>
+</pre>
+<p id='p34'>If the current evaluation was started by a button, this gives the notebook that button was in. Again, useful for palettes and similar functionality.
+</p>
+<pre class='mma-input prettyprint lang-mma'
+    id='pre35'>
+ <code>ButtonNotebook[]</code>
+</pre>
+<p id='p36'>We can get and set options on notebooks just like the front end:
+</p>
+<pre class='mma-input prettyprint lang-mma'
+    id='pre37'>
+ <code>SetOptions[</code>
+</pre>
+<p id='p38'>CreateDocument[],
+Background-&gt;RandomColor[]
+]</p>
+<p id='p39'>We can also write data to a notebook:
+</p>
+<pre class='mma-input prettyprint lang-mma'
+    id='pre40'>
+ <code>nb=CreateDocument[];
+NotebookWrite[nb,&quot;some_string&quot;]</code>
+</pre>
+<p id='p41'>We&apos;ll go more into detail of what exactly can be written and where when discussing  <code>Cells</code>  and  <code>Boxes</code> .</p>
+<p id='p42'>One final thing: although a displayed notebook is referenced by a  <code>NotebookObject</code> , it is stored as an expression with the head  <code>Notebook</code>  and for a given  <code>NotebookObject</code>  there is a way to get this expression:
+</p>
+<pre class='mma-input prettyprint lang-mma'
+    id='pre43'>
+ <code>NotebookGet@EvaluationNotebook[]</code>
+</pre>
+<p id='p44'>This pulls the entire  <code>Notebook</code>  expression for the current notebook.
+</p>
+<h3 id='h345'> Cells</h3>
+<p id='p46'>As we just saw, at the symbolic level, a notebook is a list of  <code>Cell</code>  or  <code>CellGroupData</code>  expressions plus some options. In practice, though, this turns into a column of cells. We can get this list of cells by doing the following:
+</p>
+<pre class='mma-input prettyprint lang-mma'
+    id='pre47'>
+ <code>Cells@EvaluationNotebook[]</code>
+</pre>
+<p id='p48'>In the case of this notebook, this is a very large list of cells. Let&apos;s just look at the form of the first of these:
+</p>
+<pre class='mma-input prettyprint lang-mma'
+    id='pre49'>
+ <code>First@Cells@EvaluationNotebook[]//InputForm</code>
+</pre>
+<pre class='mma-output prettyprint lang-mma'
+    id='pre50'>
+ <code>CellObject[131425]</code>
+</pre>
+<p id='p51'>You&apos;ll notice it&apos;s just an ID, because the  <code>CellObject</code>  doesn&apos;t need to track a  <code>LinkObject</code>  the way a  <code>NotebookObject</code>  does. But otherwise it can largely be treated like a  <code>NotebookObject</code>  in terms of setting and getting options.</p>
+<p id='p52'>There are a number of ways to get a  <code>CellObject</code> :
+</p>
+<pre class='mma-input prettyprint lang-mma'
+    id='pre53'>
+ <code>EvaluationCell[]
+NextCell[]
+PreviousCell[]</code>
+</pre>
+<p id='p54'>
+ <img src='https://mresources.github.io/tutorial/img/225thefrontend-3219513531743503804.png'
+     alt='225thefrontend-3219513531743503804'
+     id='img89' />
+</p>
+<p id='p55'>
+ <img src='https://mresources.github.io/tutorial/img/225thefrontend-4918419529169561977.png'
+     alt='225thefrontend-4918419529169561977'
+     id='img90' />
+</p>
+<p id='p56'>
+ <img src='https://mresources.github.io/tutorial/img/225thefrontend-5146191520937075414.png'
+     alt='225thefrontend-5146191520937075414'
+     id='img91' />
+</p>
+<p id='p57'>As with a  <code>NotebookObject</code>  there is a stored symbolic form for a  <code>CellObject</code> :
+</p>
+<pre class='mma-input prettyprint lang-mma'
+    id='pre58'>
+ <code>First@Cells@EvaluationNotebook[]//NotebookRead
+
+Cell[&quot;Mathematica For Chemists&quot;,&quot;Title&quot;,CellChangeTimes-&gt;{ {3.684256503623343`*^9,3.684256508302112`*^9}}]</code>
+</pre>
+<p id='p59'>And when we use  <code>NotebookWrite</code>  we often use it on these sorts of  <code>Cell</code>  expressions:
+</p>
+<pre class='mma-input prettyprint lang-mma'
+    id='pre60'>
+ <code>NotebookWrite[EvaluationNotebook[],</code>
+</pre>
+<p id='p61'>Cell[&quot;A newly written cell&quot;,&quot;Output&quot;,CellDingbat-&gt;Cell[&quot;NEW!!&quot;,Background-&gt;None]
+]
+]</p>
+<p id='p62'><code>NotebookWrite</code>  can also be used to overwrite cells:
+</p>
+<pre class='mma-input prettyprint lang-mma'
+    id='pre63'>
+ <code>bg=Darker@Red;
+fg=Orange;
+CellPrint@Cell[
+&quot;The phoenix burns to ashes...&quot;,
+&quot;Output&quot;,
+FontColor-&gt;fg,
+Background-&gt;bg
+];
+Do[
+NotebookWrite[
+NextCell[],
+Cell[
+&quot;The phoenix burns to ashes...&quot;,
+&quot;Output&quot;,
+FontColor-&gt;Blend[{fg,Darker[bg,i/10]},i/10],
+Background-&gt;Darker[bg,i/10]
+]
+],
+{i,10}
+];
+Pause[.25];
+Do[
+NotebookWrite[NextCell[],
+Cell[&quot;And is reborn there from&quot;,
+&quot;Output&quot;,
+FontColor-&gt;Blend[{Darker[bg,1-i/10],fg},i/10],
+Background-&gt;Darker[bg,1-i/10]
+]
+],
+{i,10}
+]</code>
+</pre>
+<p id='p64'>A general  <code>Cell</code>  expression has a deterministic form:
+</p>
+<pre class='mma-input prettyprint lang-mma'
+    id='pre65'>
+ <code>Cell[data_,style_,options__]</code>
+</pre>
+<p id='p66'><code>data</code>  will generally either be a  <code>String</code> ,  <code>BoxData</code>  expression, or  <code>TextData</code>  expression. The differences between these forms will become clearer in the section on  <code>Boxes</code></p>
+<p id='p67'>When working with a cell, it&apos;s possible to view and edit this symbolic representation using  <code>Cell <span>&#9654;</span> Show Expression</code>  or  <code><span style='color: gray; font-size: 10px; border: solid 1px gray;'><kbd>CMD</kbd></span>+E</code></p>
+<h3 id='h368'> Boxes</h3>
+<p id='p69'>If notebooks are windows and cells are elements of a notebook, then  <code>Boxes</code>  describe front-end content. Every piece of content except for primitives such as strings and numbers has a box form for display.  <code>Boxes</code>  allow for the interesting formatting that Mathematica permits, by giving a low-level spec for various styling options. We can view the boxes in an expression using  <code>ToBoxes</code> :
+</p>
+<pre class='mma-input prettyprint lang-mma'
+    id='pre70'>
+ <code>Framed[Style[</code>
+</pre>
+<p id='p71'>&quot;Something super cool&quot;,
+FontColor-&gt;CurrentValue[{StyleDefinitions,&quot;Section&quot;,FontColor}]
+],
+RoundingRadius-&gt;5,
+FrameStyle-&gt;CurrentValue[{StyleDefinitions,&quot;Section&quot;,FontColor}],
+Background-&gt;CurrentValue[{StyleDefinitions,&quot;Section&quot;,Background}]
+]
+</p>
+<pre class='mma-output prettyprint lang-mma'
+    id='pre72'>
+ <code>&quot;Something super cool&quot;
+
+ToBoxes@</code>
+</pre>
+<p id='p73'>Framed[Style[
+&quot;Something super cool&quot;,
+FontColor-&gt;CurrentValue[{StyleDefinitions,&quot;Section&quot;,FontColor}]
+],
+RoundingRadius-&gt;5,
+FrameStyle-&gt;CurrentValue[{StyleDefinitions,&quot;Section&quot;,FontColor}],
+Background-&gt;CurrentValue[{StyleDefinitions,&quot;Section&quot;,Background}]
+]
+</p>
+<p id='p74'>
+ <img src='https://mresources.github.io/tutorial/img/225thefrontend-1131873469982841262.png'
+     alt='225thefrontend-1131873469982841262'
+     id='img92' />
+</p>
+<p id='p75'>To make content like  <code>Dynamic</code>  work these boxes can&apos;t be static objects, though. Much like  <code>CellObject</code>  and  <code>NotebookObject</code>  there is a  <code>BoxObject</code>  which we can access, although with more difficulty. Easiest, though, is just to use  <code>EvaluationBox</code> :
+</p>
+<pre class='mma-input prettyprint lang-mma'
+    id='pre76'>
+ <code>Dynamic[EvaluationBox[]]</code>
+</pre>
+<p id='p77'>Note that this really does have to be wrapped in  <code>Dynamic</code> . Before it is displayed, this box doesn&apos;t exist. But we can do something fun with this now:
+</p>
+<pre class='mma-input prettyprint lang-mma'
+    id='pre78'>
+ <code>Dynamic[box=EvaluationBox[]]
+
+NotebookWrite[box,</code>
+</pre>
+<p id='p79'>ToBoxes@
+Framed[Style[
+&quot;And the box disappears...&quot;,
+ShowStringCharacters-&gt;False,
+FontColor-&gt;CurrentValue[{StyleDefinitions,&quot;Section&quot;,FontColor}]
+],
+RoundingRadius-&gt;5,
+FrameStyle-&gt;CurrentValue[{StyleDefinitions,&quot;Section&quot;,FontColor}],
+Background-&gt;CurrentValue[{StyleDefinitions,&quot;Section&quot;,Background}]
+]]</p>
+<p id='p80'>This gives us a way to use  <code>NotebookWrite</code>  to overwrite data without overwriting a cell itself.
+</p>
+<h3 id='h381'> Stylesheets</h3>
+<p id='p82'>Stylesheets give us the power to leverage the multitudinous styling options available to cells to make cascading stylesheets for giving custom styles to notebooks. On the whole this process is straightforward once you know how to get started.</p>
+<p id='p83'>For a given notebook, you can access its stylesheet by going to  <code>Format <span>&#9654;</span> Edit Stylesheet</code> . There you can edit the default cell styles or define your own.</p>
+<p id='p84'>What the front end pays attention to are cells formatted like this:
+</p>
+<pre class='mma-input prettyprint lang-mma'
+    id='pre85'>
+ <code>Cell[StyleData[style_],options___]</code>
+</pre>
+<p id='p86'>This will set  <code>options</code>  on all cells with style  <code>style</code>  by default. To inherit definitions from a different cell style use:
+</p>
+<pre class='mma-input prettyprint lang-mma'
+    id='pre87'>
+ <code>Cell[StyleData[style_,StyleDefinitions-&gt;StyleData[parent_]],options___]</code>
+</pre>
+<p id='p88'>That&apos;s pretty much it. Past that it&apos;s simply a matter of figuring out what styles work best and knowing which options do what you want done.</p>
+    </div>
+  </article>
+  <br>
+  <hr>
+<ul class="pagination">
+    <li class="page-item">
+      <a
+        class="page-link"
+        href="https://mresources.github.io/tutorial/mathematica-programming/higher-level-functionality/interfaces.html"
+        >
+        <span aria-hidden="true">
+            &laquo; Interfaces
+          </span>
+        <span class="sr-only">Previous</span>
+      </a>
+    </li>
+  <li class="page-item">
+    <a
+      class="page-link"
+      href="https://mresources.github.io/tutorial/mathematica-programming/higher-level-functionality/remote-kernels.html"
+      >
+      <span aria-hidden="true">
+        Remote Kernels &raquo;
+      </span>
+      <span class="sr-only">Next</span>
+    </a>
+  </li>
+</ul>
+  <br>
+  <div class="embedded-notebook">
+    <button
+      class="accordion-thumb accordion-thumb-hidden"
+      onclick="accordionOpen()"
+      id="accordion-thumb"
+      >
+    </button>
+    <div class="accordion-hidden" id="accordion-notebook">
+<div
+  class="embedded-notebook-resize-top"
+  style='position: relative; overflow: hidden; border: 1px solid #e3e3e3; border-radius: 4px; box-shadow: inset 0 1px 1px rgba(0,0,0,.05); height: 400px; width: 100%;'
+    >
+  <div
+    class="embedded-notebook-resize-container"
+    style='width: 100%; height: 100%;'
+    >
+  <div class="embedded-notebook-container" style="position: relative; width: 100%; height: 100%">
+  <button
+    class="embedded-notebook"
+    id="notebook-54ddfc79-3699-417c-842f-94da3192c4ab"
+    onclick="loadCloudNotebook('notebook-54ddfc79-3699-417c-842f-94da3192c4ab')"
+    style="text-align: center; height: 400px; width: 100%; cursor: pointer; background-color: #fff; background-repeat:no-repeat; border:none;"
+    >
+    <script>
+      function insertCloudNotebookCell(frameId, ops, paused = false) {
+        nbFrame = document.getElementById(frameId);
+        if (  nbFrame.contentDocument  == null && paused ) {
+          req = ops;
+          req.api="notebook";
+          req.version=1;
+          req.rid="1";
+          req.command="insertCellAtCursor";
+          origin="https://sandbox.open.wolframcloud.com";
+          nbFrame.contentWindow.postMessage(req, origin);
+        } else if (nbFrame.contentDocument  == null ) {
+          // this is clumsy but I don't really know how better to do this... the API doesn't
+          // activate until the full JS loads
+          window.setTimeout(()=>(insertCloudNotebookCell(frameId, ops, true)), 1500);
+        } else {
+          window.setTimeout(()=>(insertCloudNotebookCell(frameId, ops)), 100);
+        }
+      }
+      function populateCloudNotebookCells(frameId, cells) {
+        for (var ckey in cells) {
+          cell = cells[ckey];
+          if (typeof cell == "string") {
+            insertCloudNotebookCell(frameId, {"style":"Input", "content":cell})
+          } else {
+            if (!cell.hasOwnProperty("style")) {
+              cell.style="Input"
+            };
+            if (!cell.hasOwnProperty("content")) {
+              cell.content=""
+            };
+            insertCloudNotebookCell(frameId, cell)
+          }
+        }
+      }
+      function loadCloudNotebook(frameId) {
+        nbDiv = document.getElementById(frameId);
+        nbFrame = document.createElement('iframe');
+        nbFrame.id=nbDiv.id;
+        nbFrame.class=nbDiv.class;
+        nbFrame.src = "https://sandbox.open.wolframcloud.com/app/view/newNotebook?_view=frameless";
+        nbFrame.style = "position: absolute; left:-2px; top:-2px; height: 400px; width: 100%;"
+        nbCells = JSON.parse("[]");
+        nbDiv.parentNode.replaceChild(nbFrame, nbDiv);
+        populateCloudNotebookCells('notebook-54ddfc79-3699-417c-842f-94da3192c4ab', nbCells)
+        }
+    </script>
+    <span style="display: inline-block; vertical-align: middle;">
+      <i class="fa fa-book"></i>Click to load notebook
+    </span>
+  </button>
+  </div>
+  </div>
+</div>
+    </div>
+  </div>
+      </div>
+      </div>
+    </div>
+  <!-- Footer -->
+  <div class="w3-center w3-black w3-padding-16">
+        <div class="w3-black w3-center w3-padding-24">
+            Powered by
+            <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-opacity" style="color: green;">
+              w3.css
+            </a>
+        </div>
+  </div>
+  <!-- End page content -->
+</div>
+<script>
+// Accordion
+function myAccFunc() {
+    var x = document.getElementById("demoAcc");
+    if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+    } else {
+        x.className = x.className.replace(" w3-show", "");
+    }
+}
+// Script to open and close sidebar
+function w3_open() {
+    document.getElementById("mySidebar").style.display = "block";
+    document.getElementById("myOverlay").style.display = "block";
+}
+function w3_close() {
+    document.getElementById("mySidebar").style.display = "none";
+    document.getElementById("myOverlay").style.display = "none";
+}
+</script>
+</body>
+</html>
